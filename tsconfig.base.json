@@ -1,0 +1,25 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2020", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@pk/app-shell/feature/main-layout": [
+        "modules/app-shell/src/feature/main-layout/main-layout.component.ts"
+      ],
+      "@pk/home/routes": ["modules/home/src/routes.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}
