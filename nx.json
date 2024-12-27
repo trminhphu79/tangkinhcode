@@ -48,6 +48,7 @@
       "e2eTestRunner": "none",
       "linter": "eslint",
       "style": "scss",
+      "prefix": "pk",
       "unitTestRunner": "none"
     },
     "@nx/angular:directive": {

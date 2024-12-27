@@ -1,15 +1,22 @@
-import { MainLayoutComponent } from '@pk/app-shell/feature/main-layout';
+import { AppShellComponent } from './app-shell/app-shell.component';
 import { Routes } from '@angular/router';
 
 export const routes: Routes = [
   {
     path: '',
-    component: MainLayoutComponent,
+    component: AppShellComponent,
+    pathMatch: 'full',
     children: [
       {
-        path: '',
-        loadChildren: () => import('@pk/home/routes').then((c) => c.default),
+        path: 'forum',
+        loadChildren: () =>
+          import('./scriptures/scriptures.routes').then((c) => c.routes),
       },
     ],
+  },
+  {
+    path: 'auth',
+    loadComponent: () =>
+      import('./auth/auth.component').then((c) => c.AuthComponent),
   },
 ];

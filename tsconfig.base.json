@@ -14,12 +14,7 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {
-      "@pk/app-shell/feature/main-layout": [
-        "modules/app-shell/src/feature/main-layout/main-layout.component.ts"
-      ],
-      "@pk/home/routes": ["modules/home/src/routes.ts"]
-    }
+    "paths": {}
   },
   "exclude": ["node_modules", "tmp"]
 }

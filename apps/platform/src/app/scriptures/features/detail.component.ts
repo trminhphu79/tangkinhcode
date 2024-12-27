@@ -2,12 +2,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'pk-menu',
+  selector: 'pk-detail',
   imports: [CommonModule],
-  template: `
-    <p>menu works!</p>
-  `,
-  styleUrl: './menu.component.scss',
+  templateUrl: './detail.component.html',
+  styleUrl: './detail.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class MenuComponent {}
+export class DetailComponent {}
