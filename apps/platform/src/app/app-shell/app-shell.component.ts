@@ -9,4 +9,6 @@ import { SideBarComponent } from './side-bar/side-bar.component';
   styleUrl: './app-shell.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AppShellComponent {}
+export class AppShellComponent {
+  
+}

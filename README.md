@@ -10,9 +10,10 @@ Techstack:
 # Generation
 
 - app: nx g @nx/angular:app apps/
-- component:  nx g @nx/angular:component apps/platform//src/app/auth/auth
+- component: nx g @nx/angular:component modules/home/src/feature/
 - lib: nx g @nx/angular:lib modules/
 - directive: nx g @nx/angular:directivemodules/home/src/feature/
+- compo
 
 # Run/Build Application
 
