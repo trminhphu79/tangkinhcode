@@ -2,10 +2,9 @@ import { ChangeDetectorRef, inject, Pipe, PipeTransform } from '@angular/core';
 import { LangeCode, TranslateService } from './translate.service';
 import { ViLanguage } from './vi';
 import { EngLanguage } from './en';
-import { switchMap, tap } from 'rxjs';
 
 @Pipe({
-  name: 'translate',
+  name: 'tr',
   standalone: true,
   pure: false,
 })
