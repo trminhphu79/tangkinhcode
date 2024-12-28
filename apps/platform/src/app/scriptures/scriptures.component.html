@@ -1,2 +1,15 @@
+<div>Test Icon: <i class="pi pi-check"></i></div>
 <p>scriptures works!</p>
+
+<div class="grid">
+  @for (item of scriptures(); track $index) {
+  <div class="col-4">
+    <div>Author: {{ item.author }}</div>
+    <div>content: {{ item.content }}</div>
+  </div>
+  }
+</div>
+
+<p-button label="Create One" (onClick)="createScripture()" />
+
 <router-outlet></router-outlet>

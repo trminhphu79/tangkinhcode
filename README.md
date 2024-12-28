@@ -4,8 +4,14 @@ Author: Khoi Tran - Phu Tran
 
 Techstack:
 
-- Front-end: Angular - PrimeNg
+- Front-end: Angular - PrimeNg System
 - Backend: NestJs - Postgres
+
+# Library Reference
+
+- Layout: https://primeflex.org
+- Icons: https://primeng.org/icons
+- Component UI: https://primeng.org
 
 # Generation
 

@@ -5,7 +5,6 @@ export const routes: Routes = [
   {
     path: '',
     component: AppShellComponent,
-    pathMatch: 'full',
     children: [
       {
         path: 'forum',
