@@ -1,6 +1,9 @@
 <div>Test Icon: <i class="pi pi-check"></i></div>
 <p>scriptures works!</p>
 
+<h1>Total scriptures: {{ count() }}</h1>
+<p-button label="Create One" (onClick)="createScripture()" />
+
 <div class="grid">
   @for (item of scriptures(); track $index) {
   <div class="col-4">
@@ -9,7 +12,5 @@
   </div>
   }
 </div>
-
-<p-button label="Create One" (onClick)="createScripture()" />
 
 <router-outlet></router-outlet>
