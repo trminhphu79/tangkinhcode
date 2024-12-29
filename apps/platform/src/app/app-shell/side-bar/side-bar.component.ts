@@ -12,7 +12,11 @@ import { DividerModule } from 'primeng/divider';
 import { ButtonModule } from 'primeng/button';
 import { AvatarModule } from 'primeng/avatar';
 import { ToggleSwitchModule } from 'primeng/toggleswitch';
-import { KeyLanguage, TranslatePipe } from '@tangkinhcode/shared/language';
+import {
+  KeyLanguage,
+  LangeCode,
+  TranslatePipe,
+} from '@tangkinhcode/shared/language';
 import { Router } from '@angular/router';
 import { AppStore } from 'apps/platform/src/store/app.store';
 
@@ -48,13 +52,15 @@ export class SideBarComponent implements OnInit {
   langKeys = KeyLanguage;
   currentTab = 1;
   sideBarGroup: SideBarGroup[] = [];
-  #isDarkMode$ = computed(() => this.appStore.darkMode());
   darkModeValue = signal(false);
+  isVietnamese = signal(false);
 
   constructor(private router: Router) {}
 
   ngOnInit(): void {
-    this.darkModeValue.set(this.#isDarkMode$());
+    this.darkModeValue.set(this.appStore.darkMode());
+    this.isVietnamese.set(this.appStore.currentLangCode() == LangeCode.VI);
+
     let guildMenus = [
       {
         id: 1,
@@ -92,7 +98,7 @@ export class SideBarComponent implements OnInit {
         isActive: false,
       },
       {
-        id: 4,
+        id: 5,
         label: 'Flutter',
         icon: 'pi pi-cog',
         route: '/settings',
@@ -115,5 +121,9 @@ export class SideBarComponent implements OnInit {
   onDarkModeChange(value: boolean): void {
     this.appStore.changeThemeMode();
     this.darkModeValue.set(value);
+  }
+  onLanguageChanged(value: boolean): void {
+    this.appStore.changeLanguage(value);
+    this.isVietnamese.set(value);
   }
 }
