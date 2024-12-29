@@ -5,7 +5,7 @@
     class="w-full overflow-hidden flex flex-column justify-content-center align-items-center"
   >
     <div
-      class="form-wrapper bg-content-primary w-20rem h-26rem border-round-xl p-4 border-min border-solid"
+      class="form-wrapper bg-content-primary w-20rem h-fit border-round-xl p-4 border-min border-solid"
     >
       <div class="form-header text-center flex flex-column row-gap-3">
         <div class="flex flex-column row-gap-2">
@@ -14,46 +14,34 @@
             >TangKinh<span class="text-primary">Code</span></span
           >
         </div>
-        <span class="block text-center text-2xl">Đăng nhập</span>
+        <span class="block text-center text-2xl">
+          {{ keyLangs.SIGN_IN | tr }}
+        </span>
       </div>
-      <form class="flex flex-column row-gap-2 mt-4">
-        <p-iconfield class="border-none outline-none">
-          <p-inputicon styleClass="pi pi-email" />
-          <input
-            class="border-min w-full py-2 text-xs bg-content-primary border-solid transition-duration-200 focus:border-primary border-round-md px-2 outline-none"
-            type="text"
-            pInputText
-            placeholder="Email"
-          />
-        </p-iconfield>
-        <p-iconfield class="border-none outline-none">
-          <p-inputicon styleClass="pi pi-password" />
-          <input
-            class="border-min w-full py-2 text-xs bg-content-primary border-solid transition-duration-200 focus:border-primary border-round-md px-2 outline-none"
-            type="password"
-            pInputText
-            placeholder="Password"
-          />
-        </p-iconfield>
+      <form class="flex flex-column mt-4">
+        <ng-contianer [ngTemplateOutlet]="signInTemplateRef"></ng-contianer>
+        <ng-container *ngIf="isRegister()">
+          <ng-contianer [ngTemplateOutlet]="signUpTemplateRef"></ng-contianer>
+        </ng-container>
         <button
           type="button"
           (click)="signIn()"
-          class="w-full px-4 py-2 border-round-md bg-primary border-none outline-none hover:bg-primary-300 transition-duration-200 cursor-pointer"
+          class="mb-2 w-full px-4 py-2 border-round-md bg-primary border-none outline-none hover:bg-primary-300 transition-duration-200 cursor-pointer"
         >
-          Đăng nhập
+          {{ keyLangs.SIGN_IN | tr }}
         </button>
         <div class="form-hint">
           <span class="text-xs text-color"
-            >Bạn chưa có tài khoản?
+            >{{ questionHint() | tr }}
             <span
               class="text-primary hover:underline cursor-pointer transition-duration-200 hover:text-primary-300"
-              (click)="signUp()"
-              >Đăng ký</span
+              (click)="changeTab()"
+              >{{ actionHint() | tr }}</span
             ></span
           >
         </div>
         <p-divider align="center" type="solid">
-          <span class="text-primary text-sm">Hoặc</span>
+          <span class="text-primary text-xs">{{ keyLangs.OR | tr }}</span>
         </p-divider>
         <div class="form-socia flex row-gap-2 justify-content-center">
           <button
@@ -66,14 +54,48 @@
             type="button"
             class="gap-2 flex cursor-pointer bg-transparent border-none outlint-none"
           >
-            <img src="icons/google.svg" width="25" height="25" alt="Google icon" />
+            <img
+              src="icons/google.svg"
+              width="25"
+              height="25"
+              alt="Google icon"
+            />
           </button>
         </div>
       </form>
     </div>
   </div>
-
-  <button class="text-sm p-ripple p-component" (click)="changeMode()">
-    Change Theme Mode
-  </button>
 </div>
+
+<ng-template #signInTemplateRef>
+  <p-iconfield class="border-none outline-none mb-2">
+    <p-inputicon styleClass="pi pi-email" />
+    <input
+      class="border-min w-full py-2 text-xs bg-content-primary border-solid transition-duration-200 focus:border-primary border-round-md px-2 outline-none"
+      type="text"
+      pInputText
+      placeholder="Email"
+    />
+  </p-iconfield>
+  <p-iconfield class="border-none outline-none mb-2">
+    <p-inputicon styleClass="pi pi-password" />
+    <input
+      class="border-min w-full py-2 text-xs bg-content-primary border-solid transition-duration-200 focus:border-primary border-round-md px-2 outline-none"
+      type="password"
+      pInputText
+      placeholder="Password"
+    />
+  </p-iconfield>
+</ng-template>
+
+<ng-template #signUpTemplateRef>
+  <p-iconfield class="border-none outline-none mb-2">
+    <p-inputicon styleClass="pi pi-password" />
+    <input
+      class="border-min w-full py-2 text-xs bg-content-primary border-solid transition-duration-200 focus:border-primary border-round-md px-2 outline-none"
+      type="password"
+      pInputText
+      placeholder="Confirm password"
+    />
+  </p-iconfield>
+</ng-template>
