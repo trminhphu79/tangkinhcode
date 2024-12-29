@@ -670,6 +670,11 @@ export const themeConfigs = {
     preset: tangKinhCodePreset,
     options: {
       darkModeSelector: `.${rootSelector}`,
+      prefix: '',
+      cssLayer: {
+        name: 'primeng',
+        order: 'primeflex, primeng',
+      },
     },
   },
 };
