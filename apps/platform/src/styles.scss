@@ -3,29 +3,43 @@
 @use 'primeicons/primeicons.css';
 @use 'primeflex/primeflex.css';
 
+:root {
+  --primary-color-text: var(--primary-50);
+  --bg-content-primary: var(--primary-color-text);
+  --bg-control-primary: var(--primary-color-text);
+}
+
+.pk-dark {
+  --bg-content-primary: var(--surface-900);
+  --bg-control-primary: var(--surface-800);
+}
+
 body {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
   font-family: 'Inter', serif;
   font-optical-sizing: auto;
-}
-
-:root {
-  --primary-color-text: var(--primary-50);
-  --bg-content-primary: transparent;
-}
-
-.pk-dark {
-  --bg-content-primary: var(--surface-900);
+  background-color: var(--bg-content-primary);
 }
 
 .bg-content-primary {
   background-color: var(--bg-content-primary);
 }
 
+.bg-control-primary {
+  background-color: var(--bg-control-primar);
+}
+
 .pk-dark {
   body {
     background-color: var(--surface-900);
   }
+}
+
+input,
+select,
+option,
+textarea {
+  background-color: var(--bg-control-primary);
 }
