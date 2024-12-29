@@ -50,11 +50,10 @@ type SideBarGroup = {
 export class SideBarComponent implements OnInit {
   readonly appStore = inject(AppStore);
   langKeys = KeyLanguage;
-  currentTab = 1;
   sideBarGroup: SideBarGroup[] = [];
   darkModeValue = signal(false);
   isVietnamese = signal(false);
-  selectNavItemId = signal(-1);
+  selectedMenu = signal<SideBarMenuItem | null>(null);
 
   constructor(private router: Router) {}
 
@@ -67,21 +66,21 @@ export class SideBarComponent implements OnInit {
         id: 1,
         label: 'Thành Chương Dương',
         icon: 'pi pi-home',
-        route: '/dashboard',
+        route: '/thanh-chuong-duong',
         isActive: true,
       },
       {
         id: 2,
         label: 'Mộng Ảo Quốc',
         icon: 'pi pi-book',
-        route: '/scriptures',
+        route: '/tang-kinh',
         isActive: false,
       },
       {
         id: 3,
         label: 'Tế Sanh Đường',
         icon: 'pi pi-cog',
-        route: '/settings',
+        route: '/bang-hoi',
         isActive: false,
       },
     ];
@@ -113,7 +112,7 @@ export class SideBarComponent implements OnInit {
   }
 
   onMenuItemClick(item: SideBarMenuItem): void {
-    this.currentTab = item.id;
+    this.selectedMenu.set(item);
     if (item.route) {
       this.router.navigate([item.route]);
     }
@@ -126,9 +125,5 @@ export class SideBarComponent implements OnInit {
   onLanguageChanged(value: boolean): void {
     this.appStore.changeLanguage(value);
     this.isVietnamese.set(value);
-  }
-
-  onNavItemClick(value: any) {
-    this.selectNavItemId.set(value.id);
   }
 }

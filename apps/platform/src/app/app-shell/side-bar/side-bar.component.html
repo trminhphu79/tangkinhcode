@@ -7,8 +7,8 @@
       <div class="mt-4 flex flex-column nav-list row-gap-1">
         @for(child of group.child; track child.id){
         <div
-          (click)="onNavItemClick(child)"
-          [class.active]="selectNavItemId() === child?.id"
+          (click)="onMenuItemClick(child)"
+          [class.active]="selectedMenu()?.id === child?.id"
           class="highlight-nav-item cursor-pointer flex flex-row gap-2 px-4 py-3 border-round-lg transition-duration-200"
         >
           <i [class]="child.icon"></i>
