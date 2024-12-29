@@ -1,20 +1,22 @@
 <div class="w-screen h-screen">
-  <div class="text-xl text-primary p-4">Tàng Kinh Code</div>
+  <div class="text-xl text-primary p-4">
+    Tàng Kinh Code<span (click)="changeMode()">Change Mode</span>
+  </div>
   <div
     style="height: calc(100vh - 72.5px); margin-top: -36px"
     class="w-full overflow-hidden flex flex-column justify-content-center align-items-center"
   >
     <div
-      class="form-wrapper bg-content-primary w-20rem h-fit border-round-xl p-4 border-min border-solid"
+      class="form-wrapper w-20rem h-27rem border-round-xl p-4 border-min border-solid"
     >
       <div class="form-header text-center flex flex-column row-gap-3">
         <div class="flex flex-column row-gap-2">
           <span class="pi pi-user text-2xl"></span>
-          <span class="platform-name text-md"
+          <span class="platform-name text-md text-color"
             >TangKinh<span class="text-primary">Code</span></span
           >
         </div>
-        <span class="block text-center text-2xl">
+        <span class="block text-center text-2xl text-color">
           {{ keyLangs.SIGN_IN | tr }}
         </span>
       </div>
@@ -26,12 +28,12 @@
         <button
           type="button"
           (click)="signIn()"
-          class="mb-2 mt-2 w-full px-4 py-2 border-round-md bg-primary border-none outline-none hover:bg-primary-300 transition-duration-200 cursor-pointer"
+          class="cursor-pointer mb-2 mt-2 w-full px-4 py-2 border-round-md bg-primary border-none outline-none hover:bg-primary-300 transition-duration-200 cursor-pointer"
         >
           {{ keyLangs.SIGN_IN | tr }}
         </button>
         <div class="form-hint">
-          <span class="text-xs text-color"
+          <span class="text-color text-xs text-color"
             >{{ questionHint() | tr }}
             <span
               class="text-primary hover:underline cursor-pointer transition-duration-200 hover:text-primary-300"
@@ -71,7 +73,7 @@
   <p-iconfield class="border-none outline-none mb-2">
     <p-inputicon styleClass="pi pi-email" />
     <input
-      class="border-min w-full py-2 text-xs bg-content-primary border-solid transition-duration-200 focus:border-primary border-round-md px-2 outline-none"
+      class="text-color placeholder-xs border-min w-full py-2 text-xs border-solid transition-duration-200 focus:border-primary border-round-md px-2 outline-none"
       type="text"
       pInputText
       placeholder="Email"
@@ -80,7 +82,7 @@
   <p-iconfield class="border-none outline-none mb-2">
     <p-inputicon styleClass="pi pi-password" />
     <input
-      class="border-min w-full py-2 text-xs bg-content-primary border-solid transition-duration-200 focus:border-primary border-round-md px-2 outline-none"
+      class="text-color placeholder-xs border-min w-full py-2 text-xs border-solid transition-duration-200 focus:border-primary border-round-md px-2 outline-none"
       type="password"
       pInputText
       placeholder="Password"
@@ -92,7 +94,7 @@
   <p-iconfield class="border-none outline-none mb-2">
     <p-inputicon styleClass="pi pi-password" />
     <input
-      class="border-min w-full py-2 text-xs bg-content-primary border-solid transition-duration-200 focus:border-primary border-round-md px-2 outline-none"
+      class="text-color placeholder-xs border-min w-full py-2 text-xs border-solid transition-duration-200 focus:border-primary border-round-md px-2 outline-none"
       type="password"
       pInputText
       placeholder="Confirm password"

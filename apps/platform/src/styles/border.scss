@@ -1,3 +1,16 @@
 .border-min {
   border-width: 0.5px;
 }
+
+@mixin border-surface($surface-level) {
+  border: 1px solid var(--surface-#{$surface-level});
+}
+
+@for $level from 0 through 900 {
+  @if $level % 100 == 0 {
+    // Only for increments of 100
+    .border-surface-#{$level} {
+      @include border-surface($level);
+    }
+  }
+}

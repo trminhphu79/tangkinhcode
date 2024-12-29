@@ -1,11 +1,8 @@
 .form-wrapper {
-  border-color: var(--primary-color);
-}
-
-:host ::ng-deep {
-  .pk-dark {
-    .form-wrapper {
-      border-color: var(--primary-50) !important;
-    }
+  border-color: var(--content-border-color);
+  input {
+    border-color: var(--content-border-color);
+    background-color: transparent;
   }
 }
+

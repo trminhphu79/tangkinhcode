@@ -27,30 +27,30 @@ import { KeyLanguage, TranslatePipe } from '@tangkinhcode/shared/language';
 })
 export class SignInComponent {
   keyLangs = KeyLanguage;
-  isRegister = signal(false);
-  actionHint = computed(() =>
+  protected isRegister = signal(false);
+  protected actionHint = computed(() =>
     this.isRegister() ? KeyLanguage.SIGN_IN : KeyLanguage.SIGN_UP
   );
-  questionHint = computed(() =>
+  protected questionHint = computed(() =>
     this.isRegister()
       ? KeyLanguage.YOU_HAD_ACCOUNT
       : KeyLanguage.YOU_NOT_HAD_ACCOUNT
   );
 
-  signIn() {
+  protected signIn() {
     console.log('signIn...');
   }
 
-  signUp() {
+  protected signUp() {
     console.log('signUp...');
   }
 
-  changeMode() {
+  protected changeMode() {
     const element = document.querySelector('html');
     element?.classList.toggle(rootSelector);
   }
 
-  changeTab() {
+  protected changeTab() {
     this.isRegister.set(!this.isRegister());
   }
 }
