@@ -1,12 +1,16 @@
-<div class="p-3">
+<div class="w-20rem h-full">
   <!-- MENU GROUP -->
   <div class="flex flex-column gap-3">
     @for(group of sideBarGroup; track $index){
-    <div class="p-3 border-round-xl">
+    <div class="p-3 border-round-xl bg-content-primary">
       <span class="font-bold">{{ group.title | tr }}</span>
-      <div class="mt-4 flex flex-column gap-4">
+      <div class="mt-4 flex flex-column nav-list row-gap-1">
         @for(child of group.child; track child.id){
-        <div class="cursor-pointer flex flex-row gap-2 px-4 py-2">
+        <div
+          (click)="onNavItemClick(child)"
+          [class.active]="selectNavItemId() === child?.id"
+          class="highlight-nav-item cursor-pointer flex flex-row gap-2 px-4 py-3 border-round-lg transition-duration-200"
+        >
           <i [class]="child.icon"></i>
           <span class="font-medium">{{ child.label | tr }}</span>
         </div>
@@ -17,7 +21,7 @@
   </div>
 
   <!-- SETTING GROUP -->
-  <div class="p-3 border-round-xl mt-3">
+  <div class="p-3 border-round-xl mt-3 bg-content-primary">
     <span class="font-bold">Settings</span>
     <div class="mt-4 flex flex-column gap-4">
       <div class="flex align-items-center">

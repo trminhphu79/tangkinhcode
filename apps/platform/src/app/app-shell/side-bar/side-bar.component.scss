@@ -1,1 +1,8 @@
-
+.nav-item {
+  &:hover {
+    span,
+    i {
+      color: var(--text-primary);
+    }
+  }
+}

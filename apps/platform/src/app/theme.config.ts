@@ -543,8 +543,8 @@ const tangKinhCodePreset = definePreset(Aura, {
                 500: "#1e252b",
                 600: "#1a1f25",
                 700: "#151a1e",
-                800: "#111418",
-                900: "#0c0f11",
+                800: "#171d23",
+                900: "#13191e",
                 950: "#08090b"
             },
             primary: {

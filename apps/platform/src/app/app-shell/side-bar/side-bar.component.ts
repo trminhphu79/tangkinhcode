@@ -54,6 +54,7 @@ export class SideBarComponent implements OnInit {
   sideBarGroup: SideBarGroup[] = [];
   darkModeValue = signal(false);
   isVietnamese = signal(false);
+  selectNavItemId = signal(-1);
 
   constructor(private router: Router) {}
 
@@ -125,5 +126,9 @@ export class SideBarComponent implements OnInit {
   onLanguageChanged(value: boolean): void {
     this.appStore.changeLanguage(value);
     this.isVietnamese.set(value);
+  }
+
+  onNavItemClick(value: any) {
+    this.selectNavItemId.set(value.id);
   }
 }

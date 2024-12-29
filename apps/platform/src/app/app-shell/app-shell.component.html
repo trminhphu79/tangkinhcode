@@ -1,7 +1,13 @@
-<!-- TOP BAR -->
-<pk-top-bar class="sticky top-0 z-1"></pk-top-bar>
-<!-- CONTENT -->
-<div class="grid">
-  <pk-side-bar class="col-2 sticky"></pk-side-bar>
-  <pk-main-layout class="col-10"> </pk-main-layout>
-</div>
+<main class="h-screen w-screen">
+  <!-- TOP BAR -->
+  <pk-top-bar class="sticky top-0 z-1 h-full"></pk-top-bar>
+  <!-- CONTENT -->
+  <div class="flex p-3 gap-4" style="height: calc(100% - 80px)">
+    <pk-side-bar class="sticky w-fit"></pk-side-bar>
+    <pk-main-layout
+      style="width: calc(100% - 320px)"
+      class="overflow-y-auto border-round-xl"
+    >
+    </pk-main-layout>
+  </div>
+</main>

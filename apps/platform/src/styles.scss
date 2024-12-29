@@ -7,11 +7,13 @@
   --primary-color-text: var(--primary-50);
   --bg-content-primary: var(--primary-color-text);
   --bg-control-primary: var(--primary-color-text);
+  --nav-item-hover: var(--primary-200);
 }
 
 .pk-dark {
-  --bg-content-primary: var(--surface-900);
-  --bg-control-primary: var(--surface-800);
+  --bg-content-primary: var(--surface-800);
+  --bg-control-primary: var(--surface-700);
+  --nav-item-hover: var(--surface-500);
 }
 
 body {
@@ -28,7 +30,7 @@ body {
 }
 
 .bg-control-primary {
-  background-color: var(--bg-control-primar);
+  background-color: var(--bg-control-primary);
 }
 
 .pk-dark {
@@ -42,4 +44,23 @@ select,
 option,
 textarea {
   background-color: var(--bg-control-primary);
+}
+
+.pk-dark {
+  .highlight-nav-item {
+    &.active,
+    &:hover {
+      background-color: var(--nav-item-hover) !important;
+    }
+  }
+}
+
+.highlight-nav-item {
+  &.active,
+  &:hover {
+    span,
+    i {
+      color: var(--primary-400);
+    }
+  }
 }
