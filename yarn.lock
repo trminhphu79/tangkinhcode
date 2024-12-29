@@ -9731,7 +9731,7 @@ sass@1.80.7:
   optionalDependencies:
     "@parcel/watcher" "^2.4.1"
 
-sass@^1.42.1:
+sass@^1.42.1, sass@^1.83.0:
   version "1.83.0"
   resolved "https://registry.yarnpkg.com/sass/-/sass-1.83.0.tgz#e36842c0b88a94ed336fd16249b878a0541d536f"
   integrity sha512-qsSxlayzoOjdvXMVLkzF84DJFc2HZEL/rFyGIKbbilYtAvlCxyuzUeff9LawTn4btVnLKg75Z8MMr1lxU1lfGw==

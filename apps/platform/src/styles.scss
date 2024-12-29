@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import 'primeicons/primeicons.css';
 @import 'primeflex/primeflex.css';
+@import 'styles/main.scss';
 
 body {
   padding: 0;
@@ -8,4 +9,17 @@ body {
   box-sizing: border-box;
   font-family: 'Inter', serif;
   font-optical-sizing: auto;
+}
+
+:root {
+  --primary-color-text: var(--primary-50);
+  --bg-content-primary: transparent;
+}
+
+.pk-dark {
+  --bg-content-primary: var(--surface-900);
+}
+
+.bg-content-primary {
+  background-color: var(--bg-content-primary);
 }

@@ -15,7 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@tangkinhcode/shared/language": ["shared/src/language/index.ts"],
+      "@tangkinhcode/shared/language": ["shared/src/language/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

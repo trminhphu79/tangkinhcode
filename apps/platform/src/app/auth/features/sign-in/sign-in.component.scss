@@ -1,0 +1,11 @@
+.form-wrapper {
+  border-color: var(--primary-color);
+}
+
+:host ::ng-deep {
+  .pk-dark {
+    .form-wrapper {
+      border-color: var(--primary-50) !important;
+    }
+  }
+}
