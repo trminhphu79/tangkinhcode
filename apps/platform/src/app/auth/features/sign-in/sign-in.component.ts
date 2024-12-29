@@ -2,6 +2,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   computed,
+  inject,
   signal,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -11,6 +12,7 @@ import { TooltipModule } from 'primeng/tooltip';
 import { InputIconModule } from 'primeng/inputicon';
 import { rootSelector } from '../../../theme.config';
 import { KeyLanguage, TranslatePipe } from '@tangkinhcode/shared/language';
+import { Router } from '@angular/router';
 @Component({
   selector: 'pk-sign-in',
   imports: [
@@ -27,6 +29,9 @@ import { KeyLanguage, TranslatePipe } from '@tangkinhcode/shared/language';
 })
 export class SignInComponent {
   keyLangs = KeyLanguage;
+
+  private router: Router = inject(Router);
+
   protected isRegister = signal(false);
   protected actionHint = computed(() =>
     this.isRegister() ? KeyLanguage.SIGN_IN : KeyLanguage.SIGN_UP
@@ -52,5 +57,9 @@ export class SignInComponent {
 
   protected changeTab() {
     this.isRegister.set(!this.isRegister());
+  }
+
+  protected backHome() {
+    this.router.navigateByUrl('/');
   }
 }

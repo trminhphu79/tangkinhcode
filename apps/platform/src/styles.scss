@@ -8,12 +8,16 @@
   --bg-content-primary: var(--primary-color-text);
   --bg-control-primary: var(--primary-color-text);
   --nav-item-hover: var(--primary-200);
+  --glow-image: url(https://www.primefaces.org/cdn/primevue/images/layout/pattern.png),
+    radial-gradient(50% 50% at center -25px, red 0%, #ff0000 100%);
+  --glow-blend: hard-light, color-dodge;
 }
 
 .pk-dark {
   --bg-content-primary: var(--surface-800);
-  --bg-control-primary: var(--surface-700);
-  --nav-item-hover: var(--surface-500);
+  --bg-control-primary: var(--surface-800);
+  --nav-item-hover: var(--surface-700);
+  --divider-content-background: var(--surface-800);
 }
 
 body {
@@ -22,7 +26,9 @@ body {
   box-sizing: border-box;
   font-family: 'Inter', serif;
   font-optical-sizing: auto;
-  background-color: var(--bg-content-primary);
+  background-color: var(--surface-100);
+  color: var(--surface-700);
+  font-size: 14px;
 }
 
 .bg-content-primary {
@@ -36,6 +42,7 @@ body {
 .pk-dark {
   body {
     background-color: var(--surface-900);
+    color: var(--primary-50);
   }
 }
 
@@ -58,6 +65,7 @@ textarea {
 .highlight-nav-item {
   &.active,
   &:hover {
+    background-color: var(--surface-100);
     span,
     i {
       color: var(--primary-400);

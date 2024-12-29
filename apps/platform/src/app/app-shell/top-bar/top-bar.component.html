@@ -28,9 +28,28 @@
       src="https://ps.w.org/one-user-avatar/assets/icon-256x256.png?rev=2536829"
       width="40"
       height="40"
-      class="border-round-sm border-1 p-1"
+      class="border-round-sm border-1 p-1 mr-2"
     />
-    <span class="font-bold">{{ langKeys.login | tr }}</span>
-    <i class="pi pi-sort-down-fill"></i>
+    <span
+      class="font-bold flex align-items-center gap-2 hover:text-primary transition-duration-200"
+      (click)="navToLogin()"
+      ><span>
+        {{ langKeys.login | tr }}
+      </span>
+      <i class="pi pi-sort-down-fill"></i>
+    </span>
   </div>
 </div>
+
+<p-menu #menu [model]="userActions()" [popup]="true">
+  <ng-template #item let-item>
+    <a
+      pRipple
+      class="flex items-center p-menu-item-link"
+      (click)="userActionClick(item)"
+    >
+      <span [class]="item.icon"></span>
+      <span class="ml-2">{{ item.label }}</span>
+    </a>
+  </ng-template>
+</p-menu>

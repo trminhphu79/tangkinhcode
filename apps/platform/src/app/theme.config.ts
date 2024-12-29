@@ -313,7 +313,7 @@ const tangKinhCodePreset = definePreset(Aura, {
     iconSize: "1rem",
     anchorGutter: "2px",
     primary: {
-        50: "#fff8f5",
+        50: "#fcfcfc",
         100: "#ffdbce",
         200: "#ffbfa8",
         300: "#ffa281",
@@ -411,7 +411,7 @@ const tangKinhCodePreset = definePreset(Aura, {
             surface: {
                 0: "#ffffff",
                 50: "#f8fafc",
-                100: "#f1f5f9",
+                100: "#f2f2f2",
                 200: "#e2e8f0",
                 300: "#cbd5e1",
                 400: "#94a3b8",
@@ -535,17 +535,17 @@ const tangKinhCodePreset = definePreset(Aura, {
         dark: {
             surface: {
                 0: "#ffffff",
-                50: "#f4f4f4",
-                100: "#c9cbcc",
-                200: "#9ea1a4",
-                300: "#74787c",
-                400: "#494e53",
-                500: "#1e252b",
-                600: "#1a1f25",
-                700: "#151a1e",
-                800: "#171d23",
-                900: "#13191e",
-                950: "#08090b"
+                50: "#f5f6f7",
+                100: "#d1d5d8",
+                200: "#adb5ba",
+                300: "#89949b",
+                400: "#64737d",
+                500: "#40525e",
+                600: "#364650",
+                700: "#2d3942",
+                800: "#232d34",
+                900: "#1a2126",
+                950: "#101518"
             },
             primary: {
                 color: "{primary.400}",

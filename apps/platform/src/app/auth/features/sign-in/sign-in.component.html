@@ -1,5 +1,8 @@
 <div class="w-screen h-screen">
-  <div class="flex gap-2 align-items-center text-xl text-primary p-4">
+  <div
+    class="flex gap-2 align-items-center text-xl text-primary p-4 cursor-pointer bg-content-primary"
+    (click)="backHome()"
+  >
     <img
       src="https://primegaming.id/wp-content/uploads/2019/08/logo-prime-500x500.png"
       width="30"
@@ -7,6 +10,7 @@
     />
     <span class="font-bold text-xl">TangKinhCode</span>
   </div>
+
   <div
     style="height: calc(100vh - 72.5px); margin-top: -36px"
     class="w-full overflow-hidden flex flex-column justify-content-center align-items-center"
