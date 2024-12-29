@@ -1,0 +1,29 @@
+@mixin placeholder-style($font-size) {
+  &::placeholder {
+    font-size: $font-size !important;
+  }
+}
+
+.placeholder-xxs {
+  @include placeholder-style(0.65rem);
+}
+
+.placeholder-xs {
+  @include placeholder-style(0.75rem);
+}
+
+.placeholder-sm {
+  @include placeholder-style(0.875rem);
+}
+
+.placeholder-base {
+  @include placeholder-style(1rem);
+}
+
+.placeholder-lg {
+  @include placeholder-style(1.125rem);
+}
+
+.placeholder-xl {
+  @include placeholder-style(1.25rem);
+}
