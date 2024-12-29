@@ -1,7 +1,8 @@
+
+@use 'styles/main.scss';
 /* You can add global styles to this file, and also import other style files */
-@import 'primeicons/primeicons.css';
-@import 'primeflex/primeflex.css';
-@import 'styles/main.scss';
+@use 'primeicons/primeicons.css';
+@use 'primeflex/primeflex.css';
 
 body {
   padding: 0;
