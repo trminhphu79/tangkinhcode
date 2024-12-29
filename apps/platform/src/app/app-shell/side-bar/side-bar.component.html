@@ -1,6 +1,27 @@
-<h1>side-bar works!</h1>
-{{ keyLanguage.HELLO | tr }}
+<div class="w-16rem p-5">
+  <!-- MENU GROUP -->
+  <div class="w-16rem flex flex-column gap-5">
+    @for(group of sideBarGroup; track $index){
+    <div>
+      <span class="font-bold">{{ group.title | tr }}</span>
+      <div class="mt-4 flex flex-column gap-4">
+        @for(child of group.child; track child.id){
+        <div class="cursor-pointer flex flex-row gap-2">
+          <i [class]="child.icon"></i>
+          <span class="font-medium">{{ child.label | tr }}</span>
+        </div>
+        }
+      </div>
+    </div>
+    }
+  </div>
 
-<button (click)="changeLange()">
-  Chagne lange
-</button>
+  <!-- SETTING GROUP -->
+  <div>
+    <label for="switch1">Dark mode</label>
+    <p-toggleswitch
+      [(ngModel)]="darkModeValue"
+      (onChange)="appStore.changeThemeMode()"
+    />
+  </div>
+</div>

@@ -18,12 +18,17 @@ export class TranslatePipe implements PipeTransform {
   }
 
   transform(key: string) {
+    let returnValue = '';
     switch (this.currentCode) {
       case LangeCode.VI:
-        return ViLanguage[key];
+        returnValue = ViLanguage[key];
+        break;
       default:
-        return EngLanguage[key];
+        returnValue = EngLanguage[key];
+        break;
     }
+
+    return returnValue ?? key;
   }
 
   private registerLangeChanges() {
