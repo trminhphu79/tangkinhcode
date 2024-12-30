@@ -3,9 +3,13 @@ export class KeyLanguage {
   static findScriptures = 'Find scriptures';
   static guild = 'Guild';
   static scriptures = 'Scripture';
-  static SIGN_IN = 'SIGN_IN';
-  static SIGN_UP = 'SIGN_UP';
-  static OR = 'OR';
-  static YOU_HAD_ACCOUNT = 'YOU_HAD_ACCOUNT';
-  static YOU_NOT_HAD_ACCOUNT = 'YOU_NOT_HAD_ACCOUNT';
+  static signIn = 'SignIn';
+  static signUp = 'SignUp';
+  static or = 'Or';
+  static youHadAccount = 'YouHadAccount';
+  static youNotHadAccount = 'youNotHadAccount';
+  static profile = 'Profile';
+  static signOut = 'SignOut';
+  static vietnamese = 'Vietnamese';
+  static english = 'English';
 }

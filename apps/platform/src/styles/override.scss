@@ -106,7 +106,8 @@ h6 {
 }
 
 .pk-dark {
-  .highlight-nav-item {
+  .highlight-nav-item,
+  .p-menu-item-content {
     &.active,
     &:hover {
       background-color: var(--nav-item-hover) !important;
@@ -134,5 +135,16 @@ h6 {
 }
 
 .border-content-primary {
-  border: 1px solid var(--content-border-color)
+  border: 1px solid var(--content-border-color);
+}
+
+.p-menu-item-content {
+  &.active,
+  &:hover {
+    background-color: var(--surface-100);
+    span,
+    i {
+      color: var(--primary-400);
+    }
+  }
 }

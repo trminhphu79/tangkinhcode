@@ -2,7 +2,10 @@
   class="flex justify-content-between align-items-center p-3 bg-content-primary gap-2"
 >
   <!-- LOGO -->
-  <div class="flex gap-2 align-items-center cursor-pointer" (click)="navToHome()">
+  <div
+    class="flex gap-2 align-items-center cursor-pointer"
+    (click)="navToHome()"
+  >
     <img
       ngSrc="https://primegaming.id/wp-content/uploads/2019/08/logo-prime-500x500.png"
       width="36"
@@ -42,25 +45,35 @@
       severity="contrast"
       styleClass="border-content-primary"
     />
-    <img
-      ngSrc="https://ps.w.org/one-user-avatar/assets/icon-256x256.png?rev=2536829"
-      class="border-round-md border-1 p-1 border-content-primary"
-      width="36"
-      height="36"
-      priority
-    />
+    @if (isLogin()) {
+    <div
+      (click)="signInMenu.toggle($event)"
+      class="flex align-items-center gap-2"
+    >
+      <img
+        ngSrc="https://ps.w.org/one-user-avatar/assets/icon-256x256.png?rev=2536829"
+        class="border-round-md border-1 p-1 border-content-primary"
+        width="36"
+        height="36"
+        priority
+      />
+      <span>tranxyz79</span>
+      <i class="pi pi-angle-down"></i>
+    </div>
+    } @else {
     <span
-      class="font-bold flex align-items-center gap-2 hover:text-primary transition-duration-200"
+      class="flex align-items-center border-round-md gap-2 hover:text-primary transition-duration-200"
+      style="height: 36px; height: 36px"
       (click)="navToLogin()"
       ><span>
         {{ langKeys.login | tr }}
       </span>
-      <i class="pi pi-sort-down-fill"></i>
     </span>
+    }
   </div>
 </div>
 
-<p-menu #menu [model]="userActions()" [popup]="true">
+<p-menu #signInMenu [model]="userActions()" [popup]="true" styleClass="w-6rem">
   <ng-template #item let-item>
     <a
       pRipple
@@ -68,7 +81,7 @@
       (click)="userActionClick(item)"
     >
       <span [class]="item.icon"></span>
-      <span class="ml-2">{{ item.label }}</span>
+      <span class="ml-2">{{ item.label | tr }}</span>
     </a>
   </ng-template>
 </p-menu>
@@ -81,7 +94,7 @@
       (click)="changeLanguage(item)"
     >
       <img src="icons/flag-{{ item.icon }}.svg" width="24" height="24" />
-      <span class="ml-2 text-xs">{{ item.label }}</span>
+      <span class="ml-2 text-xs">{{ item.label | tr }}</span>
     </a>
   </ng-template>
 </p-menu>

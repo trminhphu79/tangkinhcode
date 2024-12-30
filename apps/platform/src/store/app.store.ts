@@ -25,6 +25,7 @@ export const AppStore = signalStore(
       );
     },
     changeLanguage(isVietnamese: boolean): void {
+      console.log('changeLanguage:');
       const newCode = isVietnamese ? LangeCode.VI : LangeCode.EN;
 
       translate.setCurrentLangCode(newCode);

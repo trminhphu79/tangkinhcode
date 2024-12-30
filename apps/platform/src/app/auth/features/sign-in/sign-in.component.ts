@@ -13,6 +13,7 @@ import { InputIconModule } from 'primeng/inputicon';
 import { rootSelector } from '../../../theme.config';
 import { KeyLanguage, TranslatePipe } from '@tangkinhcode/shared/language';
 import { Router } from '@angular/router';
+import { TopBarComponent } from '../../../app-shell/top-bar/top-bar.component';
 @Component({
   selector: 'pk-sign-in',
   imports: [
@@ -22,6 +23,7 @@ import { Router } from '@angular/router';
     DividerModule,
     TooltipModule,
     TranslatePipe,
+    TopBarComponent
   ],
   templateUrl: './sign-in.component.html',
   styleUrl: './sign-in.component.scss',
@@ -34,12 +36,12 @@ export class SignInComponent {
 
   protected isRegister = signal(false);
   protected actionHint = computed(() =>
-    this.isRegister() ? KeyLanguage.SIGN_IN : KeyLanguage.SIGN_UP
+    this.isRegister() ? KeyLanguage.signIn : KeyLanguage.signUp
   );
   protected questionHint = computed(() =>
     this.isRegister()
-      ? KeyLanguage.YOU_HAD_ACCOUNT
-      : KeyLanguage.YOU_NOT_HAD_ACCOUNT
+      ? KeyLanguage.youHadAccount
+      : KeyLanguage.youNotHadAccount
   );
 
   protected signIn() {
