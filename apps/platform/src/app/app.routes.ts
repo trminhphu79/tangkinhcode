@@ -7,6 +7,11 @@ export const routes: Routes = [
     component: AppShellComponent,
     children: [
       {
+        path: '',
+        redirectTo: 'thanh-chuong-duong',
+        pathMatch: 'full',
+      },
+      {
         path: 'thanh-chuong-duong',
         loadChildren: () =>
           import('./fortress/fortress.routes').then((c) => c.fortressRoutes),

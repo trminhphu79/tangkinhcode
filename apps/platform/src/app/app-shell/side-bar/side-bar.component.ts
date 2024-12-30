@@ -51,14 +51,14 @@ export class SideBarComponent implements OnInit {
   readonly appStore = inject(AppStore);
   langKeys = KeyLanguage;
   sideBarGroup: SideBarGroup[] = [];
-  darkModeValue = signal(false);
+
+  darkMode = this.appStore.darkMode;
   isVietnamese = signal(false);
   selectedMenu = signal<SideBarMenuItem | null>(null);
 
   constructor(private router: Router) {}
 
   ngOnInit(): void {
-    this.darkModeValue.set(this.appStore.darkMode());
     this.isVietnamese.set(this.appStore.currentLangCode() == LangeCode.VI);
 
     let guildMenus = [
@@ -120,7 +120,6 @@ export class SideBarComponent implements OnInit {
 
   onDarkModeChange(value: boolean): void {
     this.appStore.changeThemeMode();
-    this.darkModeValue.set(value);
   }
   onLanguageChanged(value: boolean): void {
     this.appStore.changeLanguage(value);

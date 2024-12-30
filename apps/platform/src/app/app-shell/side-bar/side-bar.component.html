@@ -11,7 +11,8 @@
         <div
           (click)="onMenuItemClick(child)"
           [class.active]="selectedMenu()?.id === child?.id"
-          class="highlight-nav-item px-3 cursor-pointer flex flex-row gap-3 py-2 border-round-lg transition-duration-200 align-items-center"
+          class="highlight-nav-item px-3 cursor-pointer flex flex-row gap-2 border-round-lg transition-duration-200 align-items-center"
+          style="padding: 12px 0"
         >
           <i [class]="child.icon" class="text-lg"></i>
           <span class="text-sm">{{ child.label | tr }}</span>
@@ -20,26 +21,5 @@
       </div>
     </div>
     }
-  </div>
-
-  <!-- SETTING GROUP -->
-  <div class="p-3 border-round-xl mt-3 bg-content-primary">
-    <span class="font-bold text-xl">Settings</span>
-    <div class="mt-4 flex flex-column gap-4">
-      <div class="flex align-items-center">
-        <label class="flex-1">Dark mode</label>
-        <p-toggleswitch
-          [(ngModel)]="darkModeValue"
-          (onChange)="appStore.changeThemeMode()"
-        />
-      </div>
-      <div class="flex align-items-center">
-        <label class="flex-1">Vietnamese</label>
-        <p-toggleswitch
-          [(ngModel)]="isVietnamese"
-          (onChange)="appStore.changeLanguage($event.checked)"
-        />
-      </div>
-    </div>
   </div>
 </div>

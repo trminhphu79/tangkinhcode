@@ -132,3 +132,7 @@ h6 {
 .bg-control-primary {
   background-color: var(--bg-control-primary);
 }
+
+.border-content-primary {
+  border: 1px solid var(--content-border-color)
+}
