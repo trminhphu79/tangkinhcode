@@ -1,0 +1,134 @@
+:root {
+  --primary-color-text: var(--primary-50);
+  --bg-content-primary: var(--primary-color-text);
+  --bg-control-primary: var(--primary-color-text);
+  --nav-item-hover: var(--primary-200);
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', serif;
+  font-optical-sizing: auto;
+  background-color: var(--surface-100);
+  color: var(--surface-700);
+  font-size: 12px;
+}
+
+input,
+select,
+option,
+textarea {
+  background-color: var(--bg-control-primary);
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+input,
+textarea,
+select,
+button {
+  //   outline: none;
+  //   font: inherit;
+}
+input {
+  //   line-height: normal;
+}
+label,
+button {
+  cursor: pointer;
+  user-select: none !important;
+}
+ul {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+  user-select: none !important;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+/* Mobie: width < 740px */
+@media only screen and (max-width: 46.1875em) {
+  input[type='color'],
+  input[type='date'],
+  input[type='datetime'],
+  input[type='datetime-local'],
+  input[type='email'],
+  input[type='month'],
+  input[type='number'],
+  input[type='password'],
+  input[type='search'],
+  input[type='tel'],
+  input[type='text'],
+  input[type='time'],
+  input[type='url'],
+  input[type='week'],
+  select:focus,
+  textarea {
+    font-size: 14px;
+  }
+}
+.pk-dark {
+  --bg-content-primary: var(--surface-800);
+  --bg-control-primary: var(--surface-800);
+  --nav-item-hover: var(--surface-700);
+  --divider-content-background: var(--surface-800);
+}
+
+.pk-dark {
+  body {
+    background-color: var(--surface-900);
+    color: var(--primary-50);
+  }
+}
+
+.pk-dark {
+  .highlight-nav-item {
+    &.active,
+    &:hover {
+      background-color: var(--nav-item-hover) !important;
+    }
+  }
+}
+
+.highlight-nav-item {
+  &.active,
+  &:hover {
+    background-color: var(--surface-100);
+    span,
+    i {
+      color: var(--primary-400);
+    }
+  }
+}
+
+.bg-content-primary {
+  background-color: var(--bg-content-primary);
+}
+
+.bg-control-primary {
+  background-color: var(--bg-control-primary);
+}

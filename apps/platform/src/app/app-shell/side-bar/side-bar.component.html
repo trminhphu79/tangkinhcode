@@ -5,16 +5,16 @@
     <div class="py-4 px-2 border-round-xl bg-content-primary">
       <span class="font-bold text-xl ml-2">{{ group.title | tr }}</span>
       <div
-        class="mt-4 flex flex-column justify-content-center nav-list row-gap-1"
+        class="mt-3 flex flex-column justify-content-center nav-list row-gap-1"
       >
         @for(child of group.child; track child.id){
         <div
           (click)="onMenuItemClick(child)"
           [class.active]="selectedMenu()?.id === child?.id"
-          class="highlight-nav-item px-3 cursor-pointer flex flex-row gap-3 py-3 border-round-lg transition-duration-200 align-items-center"
+          class="highlight-nav-item px-3 cursor-pointer flex flex-row gap-3 py-2 border-round-lg transition-duration-200 align-items-center"
         >
-          <i [class]="child.icon" class="text-xl"></i>
-          <span class="font-medium">{{ child.label | tr }}</span>
+          <i [class]="child.icon" class="text-lg"></i>
+          <span class="text-sm">{{ child.label | tr }}</span>
         </div>
         }
       </div>
