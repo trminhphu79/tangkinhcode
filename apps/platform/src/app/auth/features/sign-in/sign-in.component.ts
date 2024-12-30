@@ -1,3 +1,4 @@
+import { OAuthService } from '@tangkinhcode/services/oauth';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -14,6 +15,8 @@ import { rootSelector } from '../../../theme.config';
 import { KeyLanguage, TranslatePipe } from '@tangkinhcode/shared/language';
 import { Router } from '@angular/router';
 import { TopBarComponent } from '../../../app-shell/top-bar/top-bar.component';
+import { RippleModule } from 'primeng/ripple';
+
 @Component({
   selector: 'pk-sign-in',
   imports: [
@@ -23,7 +26,8 @@ import { TopBarComponent } from '../../../app-shell/top-bar/top-bar.component';
     DividerModule,
     TooltipModule,
     TranslatePipe,
-    TopBarComponent
+    TopBarComponent,
+    RippleModule,
   ],
   templateUrl: './sign-in.component.html',
   styleUrl: './sign-in.component.scss',
@@ -38,10 +42,11 @@ export class SignInComponent {
   protected actionHint = computed(() =>
     this.isRegister() ? KeyLanguage.signIn : KeyLanguage.signUp
   );
+  protected actionBtnLabel = computed(() =>
+    this.isRegister() ? KeyLanguage.signUp : KeyLanguage.signIn
+  );
   protected questionHint = computed(() =>
-    this.isRegister()
-      ? KeyLanguage.youHadAccount
-      : KeyLanguage.youNotHadAccount
+    this.isRegister() ? KeyLanguage.youHadAccount : KeyLanguage.youNotHadAccount
   );
 
   protected signIn() {
@@ -63,5 +68,11 @@ export class SignInComponent {
 
   protected backHome() {
     this.router.navigateByUrl('/');
+  }
+
+  protected githubSignIn() {
+    window.open(
+      'https://github.com/login/oauth/authorize?scope=user:email&client_id=Ov23lis4b1cYWl1kueJv'
+    );
   }
 }

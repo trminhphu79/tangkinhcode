@@ -26,10 +26,11 @@
         </ng-container>
         <button
           type="button"
+          pRipple
           (click)="signIn()"
           class="cursor-pointer mb-2 mt-2 w-full px-4 py-2 border-round-md bg-primary border-none outline-none hover:bg-primary-300 transition-duration-200 cursor-pointer"
         >
-          {{ keyLangs.signIn | tr }}
+          {{ actionBtnLabel() | tr }}
         </button>
         <div class="form-hint">
           <span class="text-color text-xs text-color"
@@ -47,6 +48,7 @@
         <div class="form-socia flex row-gap-2 justify-content-center">
           <button
             type="button"
+            (click)="githubSignIn()"
             class="gap-2 cursor-pointer bg-transparent border-none outlint-none"
           >
             <span class="pi pi-github text-2xl"></span>

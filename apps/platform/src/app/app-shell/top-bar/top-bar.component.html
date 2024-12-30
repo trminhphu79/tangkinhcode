@@ -23,7 +23,7 @@
       pInputText
       type="text"
       class="py-2 w-full border-round-md sm:w-22rem placeholder-sm"
-      [placeholder]="langKeys.findScriptures | tr"
+      [placeholder]="(langKeys.findScriptures | tr) + '...'"
     />
     <p-inputicon styleClass="pi pi-search"></p-inputicon>
   </p-iconfield>
@@ -39,6 +39,7 @@
       priority
     />
     <p-button
+      pRipple
       (click)="changeThemMode()"
       icon="pi pi-{{ darkMode() ? 'sun text-lg' : 'moon text-lg' }} "
       variant="outlined"
@@ -62,8 +63,9 @@
     </div>
     } @else {
     <span
-      class="flex align-items-center border-round-md gap-2 hover:text-primary transition-duration-200"
+      class="min-w-2rem flex align-items-center text-primary border-round-md gap-2 px-2 transition-duration-200 border-round-md border-1 p-1 border-primary"
       style="height: 36px; height: 36px"
+      pRipple
       (click)="navToLogin()"
       ><span>
         {{ langKeys.login | tr }}

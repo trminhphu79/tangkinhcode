@@ -673,4 +673,5 @@ export const themeConfigs = {
       },
     },
   },
+  ripple: true
 };

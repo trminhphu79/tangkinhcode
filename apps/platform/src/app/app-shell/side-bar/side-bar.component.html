@@ -11,6 +11,7 @@
         <div
           (click)="onMenuItemClick(child)"
           [class.active]="selectedMenu()?.id === child?.id"
+          pRipple
           class="highlight-nav-item px-3 cursor-pointer flex flex-row gap-2 border-round-lg transition-duration-200 align-items-center"
           style="padding: 12px 0"
         >

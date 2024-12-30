@@ -3,6 +3,7 @@ import { KeyLanguage } from './key';
 export const ViLanguage = Object.freeze({
   [KeyLanguage.login]: 'Đăng nhập',
   [KeyLanguage.findScriptures]: 'Tìm kiếm tàng kinh',
+  [KeyLanguage.findGuilds]: 'Tìm kiếm bang hội',
   [KeyLanguage.signIn]: 'Đăng nhập',
   [KeyLanguage.or]: 'Hoặc',
   [KeyLanguage.signUp]: 'Đăng ký',

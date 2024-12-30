@@ -18,14 +18,18 @@ import { KeyLanguage, LangeCode } from '@tangkinhcode/shared/language';
 import { TranslatePipe } from '@tangkinhcode/shared/language';
 import { MenuItem } from 'primeng/api';
 import { AppStore } from 'apps/platform/src/store/app.store';
-import { NgOptimizedImage } from '@angular/common';
+import { AsyncPipe, NgOptimizedImage } from '@angular/common';
+import { RippleModule } from 'primeng/ripple';
+import { interval, map, tap } from 'rxjs';
 
 @Component({
   selector: 'pk-top-bar',
   imports: [
+    AsyncPipe,
     MenubarModule,
     ButtonModule,
     MenuModule,
+    RippleModule,
     TranslatePipe,
     IconFieldModule,
     InputIconModule,

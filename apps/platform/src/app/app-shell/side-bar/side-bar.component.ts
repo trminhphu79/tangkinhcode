@@ -11,6 +11,7 @@ import { PanelMenuModule } from 'primeng/panelmenu';
 import { DividerModule } from 'primeng/divider';
 import { ButtonModule } from 'primeng/button';
 import { AvatarModule } from 'primeng/avatar';
+import { RippleModule } from 'primeng/ripple';
 import { ToggleSwitchModule } from 'primeng/toggleswitch';
 import {
   KeyLanguage,
@@ -42,6 +43,7 @@ type SideBarGroup = {
     TranslatePipe,
     ToggleSwitchModule,
     FormsModule,
+    RippleModule,
   ],
   templateUrl: './side-bar.component.html',
   styleUrl: './side-bar.component.scss',
@@ -61,7 +63,7 @@ export class SideBarComponent implements OnInit {
   ngOnInit(): void {
     this.isVietnamese.set(this.appStore.currentLangCode() == LangeCode.VI);
 
-    let guildMenus = [
+    const guildMenus = [
       {
         id: 1,
         label: 'Thành Chương Dương',
@@ -89,7 +91,7 @@ export class SideBarComponent implements OnInit {
       child: guildMenus,
     });
 
-    let scripturesMenu = [
+    const scripturesMenu = [
       {
         id: 4,
         label: 'Angular',

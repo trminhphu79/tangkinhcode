@@ -1,6 +1,7 @@
 export class KeyLanguage {
   static login = 'Login';
   static findScriptures = 'Find scriptures';
+  static findGuilds = 'Find guilds';
   static guild = 'Guild';
   static scriptures = 'Scripture';
   static signIn = 'SignIn';

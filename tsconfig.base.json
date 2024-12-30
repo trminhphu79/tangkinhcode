@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@tangkinhcode/shared/language": ["shared/src/language/index.ts"]
+      "@tangkinhcode/shared/language": ["shared/src/language/index.ts"],
+      "@tangkinhcode/services/oauth": ["shared/src/services/oauth.service.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
