@@ -1,0 +1,1 @@
+import"./chunk-7CGTOI24.js";var t=[{path:"",loadComponent:()=>import("./chunk-WBIPIJVV.js").then(o=>o.ScripturesComponent),loadChildren:()=>Promise.resolve([{path:":slug",loadComponent:()=>import("./chunk-WN2A66AF.js").then(o=>o.DetailComponent)}])}];export{t as routes};
