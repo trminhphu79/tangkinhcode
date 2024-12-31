@@ -1,0 +1,58 @@
+<section
+  class="new-feed-item flex flex-column border-1 border-content-primary p-4 border-round-2xl bg-content-primary"
+>
+  <section class="header flex mb-2">
+    <section class="w-fit h-fit">
+      <p-avatar
+        image="{{ data().author.avatarUrl }}"
+        class="mr-2"
+        size="large"
+        shape="circle"
+      />
+    </section>
+    <section>
+      <div class="flex align-items-center gap-1">
+        <span class="text-sm">{{ data().author.nickName }}</span>
+        <span class="pi pi-angle-right text-xs"></span>
+        <span
+          class="text-color opacity-80 hover:underline cursor-pointer underline-offset-1"
+          >Bang Cái Bang</span
+        >
+      </div>
+      <div class="text-xs mt-1">{{data().post.createdAt | timeAgo}}</div>
+    </section>
+  </section>
+  <section class="content mb-2">
+    <section class="text-content">
+      <h2 class="p-0 m-0">Lorem ipsum dolor sit alit. Magnam, iure.</h2>
+      <div class="line-height-3 mt-3">
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ad dicta quo
+        exercitationem ab earum, qui dolorem quidem ipsum nisi ex cum quasi
+        dolore natus tempore unde magnam placeat doloremque voluptas.
+        Similique...
+      </div>
+    </section>
+    <section class="media-content mt-4 flex justify-content-center">
+      <img
+        class="border-round-lg"
+        alt="content-img"
+        src="https://imgcdn.stablediffusionweb.com/2024/8/15/4ad6c51e-1cdb-4ae0-beb8-83b4590b9a21.jpg"
+      />
+    </section>
+  </section>
+  <section class="footer flex gap-2 mt-2">
+    <p-button
+      icon="pi pi-thumbs-up-fill"
+      severity="primary"
+      text
+      label="{{ data().post.like }}"
+    />
+    <p-button
+      icon="pi pi-thumbs-down"
+      severity="secondary"
+      text
+      label="{{ data().post.dislike }}"
+    />
+    <p-button icon="pi pi-comment" severity="secondary" text label="33" />
+  </section>
+</section>

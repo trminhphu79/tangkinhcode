@@ -15,8 +15,12 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@tangkinhcode/services/oauth": ["shared/src/services/oauth.service.ts"],
       "@tangkinhcode/shared/language": ["shared/src/language/index.ts"],
-      "@tangkinhcode/services/oauth": ["shared/src/services/oauth.service.ts"]
+      "@tangkinhcode/shared/pipes": ["shared/src/pipes/index.ts"],
+      "@tangkinhcode/shared/compnent/new-feed": [
+        "shared/src/components/new-feed/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]

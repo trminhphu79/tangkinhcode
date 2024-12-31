@@ -8,8 +8,9 @@ export const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'thanh-chuong-duong',
-        pathMatch: 'full',
+        pathMatch:'full',
+        loadChildren: () =>
+          import('./new-feed/new-feed.routes').then((r) => r.newfeedRoutes),
       },
       {
         path: 'thanh-chuong-duong',

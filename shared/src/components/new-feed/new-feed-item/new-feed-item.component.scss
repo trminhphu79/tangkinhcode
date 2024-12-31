@@ -1,0 +1,9 @@
+.media-content {
+  max-height: 420px;
+  height: 420px;
+  img {
+    object-fit: contain;
+    width: fit-content;
+    height: 100%;
+  }
+}

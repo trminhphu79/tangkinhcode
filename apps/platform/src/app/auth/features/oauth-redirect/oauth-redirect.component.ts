@@ -16,6 +16,7 @@ export class OauthRedirectComponent {
 
   ngOnInit() {
     this.activatedRoute.queryParams.subscribe((data: any) => {
+      console.log("Code: ", data)
       const url = 'http://localhost:3000/api/auth/oauth';
       this.oauthService
         .signIn(url, { code: data.code, credentialType: 'GITHUB' })
@@ -24,6 +25,4 @@ export class OauthRedirectComponent {
         });
     });
   }
-
-
 }
