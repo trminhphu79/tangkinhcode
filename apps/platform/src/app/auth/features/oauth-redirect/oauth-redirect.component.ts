@@ -2,7 +2,6 @@ import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { OAuthService } from '@tangkinhcode/services/oauth';
 import { ActivatedRoute } from '@angular/router';
-
 @Component({
   selector: 'pk-oauth-redirect',
   imports: [CommonModule],
@@ -25,4 +24,6 @@ export class OauthRedirectComponent {
         });
     });
   }
+
+
 }

@@ -45,6 +45,7 @@
         <p-divider align="center" type="solid">
           <span class="text-primary text-xs">{{ keyLangs.or | tr }}</span>
         </p-divider>
+
         <div class="form-socia flex row-gap-2 justify-content-center">
           <button
             type="button"
@@ -53,8 +54,10 @@
           >
             <span class="pi pi-github text-2xl"></span>
           </button>
+
           <button
             type="button"
+            (click)="googleSignIn()"
             class="gap-2 flex cursor-pointer bg-transparent border-none outlint-none"
           >
             <img
