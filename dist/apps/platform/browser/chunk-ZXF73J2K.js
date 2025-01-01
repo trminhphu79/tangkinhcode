@@ -1,0 +1,1 @@
+import"./chunk-4CLCTAJ7.js";var t=[{path:"",loadComponent:()=>import("./chunk-6EUE22GT.js").then(o=>o.GuildComponent)},{path:":slug",loadComponent:()=>import("./chunk-TH447PVR.js").then(o=>o.GuildDetailComponent)}];export{t as guildRoutes};

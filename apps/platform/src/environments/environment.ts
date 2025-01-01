@@ -1,4 +1,5 @@
 export const environment = {
+  version: '1.0.0',
   production: false,
   apiUrl: 'http://103.216.119.84:3000/api/',
   googleClientId:
