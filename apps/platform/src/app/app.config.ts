@@ -13,7 +13,7 @@ import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideHttpClient } from '@angular/common/http';
 import { environment } from '../environments/environment';
 import { of, pipe, tap } from 'rxjs';
-import { AppConfig } from './app-config.store';
+import { AppConfig } from '@tangkinhcode/shared/app-config';
 
 export const appConfig: ApplicationConfig = {
   providers: [

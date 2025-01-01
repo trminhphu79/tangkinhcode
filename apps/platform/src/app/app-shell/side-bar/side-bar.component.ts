@@ -19,7 +19,7 @@ import {
   TranslatePipe,
 } from '@tangkinhcode/shared/language';
 import { Router } from '@angular/router';
-import { AppStore } from 'apps/platform/src/store/app.store';
+import { AppStore } from '../../../store/app.store';
 
 type SideBarMenuItem = {
   id: number;

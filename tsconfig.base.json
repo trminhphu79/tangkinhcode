@@ -17,7 +17,10 @@
     "paths": {
       "@tangkinhcode/services/oauth": ["shared/src/services/oauth.service.ts"],
       "@tangkinhcode/shared/language": ["shared/src/language/index.ts"],
+      "@tangkinhcode/shared/services": ["shared/src/services/index.ts"],
       "@tangkinhcode/shared/pipes": ["shared/src/pipes/index.ts"],
+      "@tangkinhcode/shared/models": ["shared/src/models/index.ts"],
+      "@tangkinhcode/shared/app-config": ["shared/src/app-config/index.ts"],
       "@tangkinhcode/shared/compnent/new-feed": [
         "shared/src/components/new-feed/index.ts"
       ]

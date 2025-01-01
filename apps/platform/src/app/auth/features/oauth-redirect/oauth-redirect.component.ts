@@ -1,28 +1,30 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { OAuthService } from '@tangkinhcode/services/oauth';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  OnInit,
+} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ProgressBarModule } from 'primeng/progressbar';
+import { AuthStore } from '../../store';
+
 @Component({
   selector: 'pk-oauth-redirect',
-  imports: [CommonModule],
+  imports: [ProgressBarModule],
   templateUrl: './oauth-redirect.component.html',
   styleUrl: './oauth-redirect.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class OauthRedirectComponent {
-  private oauthService = inject(OAuthService);
-
+export class OauthRedirectComponent implements OnInit {
+  private authStore = inject(AuthStore);
   private activatedRoute = inject(ActivatedRoute);
 
   ngOnInit() {
     this.activatedRoute.queryParams.subscribe((data: any) => {
-      console.log("Code: ", data)
-      const url = 'http://localhost:3000/api/auth/oauth';
-      this.oauthService
-        .signIn(url, { code: data.code, credentialType: 'GITHUB' })
-        .subscribe((response) => {
-          console.log('github auth response: ', response);
-        });
+      this.authStore.oauthSignIn({
+        token: data.code,
+        credentialType: 'GITHUB',
+      });
     });
   }
 }

@@ -2,15 +2,18 @@ import { patchState, signalStore, withMethods, withState } from '@ngrx/signals';
 import { LangeCode, TranslateService } from '@tangkinhcode/shared/language';
 import { rootSelector } from '../app/theme.config';
 import { inject } from '@angular/core';
+import { Account } from '@tangkinhcode/shared/models';
 
 type AppState = {
   currentLangCode: LangeCode;
   darkMode: boolean;
+  user: Partial<Account>;
 };
 
 const initialState: AppState = {
   currentLangCode: LangeCode.VI,
   darkMode: true,
+  user: {},
 };
 
 export const AppStore = signalStore(
