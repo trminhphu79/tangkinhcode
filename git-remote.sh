@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Define repository URLs
-BITBUCKET_REMOTE="https://phutran79@bitbucket.org/lelinh781/code-cultivation.git"
+BITBUCKET_REMOTE="https://phutran79@bitbucket.org/lelinh781/tangkinhcode.git"
 GITHUB_REMOTE="https://github.com/trminhphu79/tangkinhcode.git"
 
 # Fetch the latest updates from both remotes

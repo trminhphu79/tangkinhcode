@@ -1,5 +1,5 @@
 export const environment = {
-  version: '1.0.0',
+  version: '1.0.1',
   production: false,
   apiUrl: 'http://localhost:3000/api/',
   googleClientId:
