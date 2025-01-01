@@ -1,6 +1,6 @@
 export const environment = {
   production: false,
-  apiUrl: '103.216.119.84:3000/api/',
+  apiUrl: 'http://103.216.119.84:3000/api/',
   googleClientId:
     '119323196099-8h3edgkcfdart0ncvmf23lq87bgtef8q.apps.googleusercontent.com',
   githubClientUrl:
