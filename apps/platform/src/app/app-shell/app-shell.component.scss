@@ -1,0 +1,19 @@
+main {
+  pk-top-bar {
+    top: 0;
+    left: 0;
+    z-index: 2;
+  }
+  pk-side-bar {
+    top: 68px;
+    left: 0;
+  }
+
+  .main-layout-wrapper {
+    position: relative;
+
+    pk-main-layout {
+      width: calc(100% - 271px);
+    }
+  }
+}

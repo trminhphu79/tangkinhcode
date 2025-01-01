@@ -1,5 +1,9 @@
 <section class="new-feed-list flex flex-column row-gap-4">
   @for (item of dataSource(); track $index) {
-  <pk-new-feed-item [data]="item"></pk-new-feed-item>
+  <pk-new-feed-item
+    [data]="item"
+    (authorClick)="onAuthorClick($event)"
+    (guildClick)="onSelectGuild($event)"
+  ></pk-new-feed-item>
   }
 </section>

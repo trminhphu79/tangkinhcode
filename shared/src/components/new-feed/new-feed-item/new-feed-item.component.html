@@ -12,33 +12,37 @@
     </section>
     <section>
       <div class="flex align-items-center gap-1">
-        <span class="text-sm">{{ data().author.nickName }}</span>
-        <span class="pi pi-angle-right text-xs"></span>
         <span
+          class="text-sm text-color cursor-pointer hover:underline underline-offset-1"
+          (click)="authorClick.emit(data().author)"
+          >{{ data().author.nickName }}</span
+        >
+        <span class="pi pi-angle-right text-xs"></span>
+        <a
           class="text-color opacity-80 hover:underline cursor-pointer underline-offset-1"
-          >Bang Cái Bang</span
+          (click)="guildClick.emit(data().author.guild)"
+          >{{ data().author.guild.name }}</a
         >
       </div>
-      <div class="text-xs mt-1">{{data().post.createdAt | timeAgo}}</div>
+      <div class="text-xs mt-1 opacity-90">
+        {{ data().post.createdAt | timeAgo }}
+      </div>
     </section>
   </section>
   <section class="content mb-2">
     <section class="text-content">
-      <h2 class="p-0 m-0">Lorem ipsum dolor sit alit. Magnam, iure.</h2>
-      <div class="line-height-3 mt-3">
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ad dicta quo
-        exercitationem ab earum, qui dolorem quidem ipsum nisi ex cum quasi
-        dolore natus tempore unde magnam placeat doloremque voluptas.
-        Similique...
-      </div>
+      <div class="p-0 m-0 text-lg font-bold">{{ data().post.title }}</div>
+      <div
+        class="line-height-3 mt-3 text-sm"
+        [innerHTML]="data().post.content"
+      ></div>
     </section>
-    <section class="media-content mt-4 flex justify-content-center">
-      <img
-        class="border-round-lg"
-        alt="content-img"
-        src="https://imgcdn.stablediffusionweb.com/2024/8/15/4ad6c51e-1cdb-4ae0-beb8-83b4590b9a21.jpg"
-      />
-    </section>
+    @if(data().post.mediaUrl.length){
+    <ng-containter
+      [ngTemplateOutlet]="mediaTemplate"
+      [ngTemplateOutletContext]="{ $implicit: data().post.mediaUrl }"
+    ></ng-containter>
+    }
   </section>
   <section class="footer flex gap-2 mt-2">
     <p-button
@@ -56,3 +60,23 @@
     <p-button icon="pi pi-comment" severity="secondary" text label="33" />
   </section>
 </section>
+
+<ng-template #mediaTemplate let-data>
+  <section
+    class="media-content mt-4 flex justify-content-center relative border-round-lg"
+  >
+    <div class="background-blur"></div>
+    @for (url of data; track $index) {
+    <div class="image-wrapper w-full h-full flex justify-content-center">
+      <img
+        class="content-img cursor-pointer"
+        alt="content-img"
+        [src]="url"
+        priority
+        loading="eager"
+        (click)="imageClick.emit(url)"
+      />
+    </div>
+    }
+  </section>
+</ng-template>

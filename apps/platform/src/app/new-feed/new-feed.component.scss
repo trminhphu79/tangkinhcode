@@ -1,0 +1,15 @@
+.new-feed-wrapper {
+  .new-feed-container {
+    width: 800px;
+    max-width: 800px;
+  }
+}
+
+@media screen and (max-width: 1440px) {
+  .new-feed-wrapper {
+    .new-feed-container {
+      width: 700px;
+      max-width: 700px;
+    }
+  }
+}

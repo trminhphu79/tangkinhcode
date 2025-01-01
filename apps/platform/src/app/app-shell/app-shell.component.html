@@ -1,13 +1,10 @@
-<main class="h-screen w-screen">
-  <!-- TOP BAR -->
-  <pk-top-bar class="h-full"></pk-top-bar>
-  <!-- CONTENT -->
-  <div class="flex p-4 gap-4" style="height: calc(100% - 70px)">
-    <pk-side-bar class="w-fit"></pk-side-bar>
-    <pk-main-layout
-      style="width: calc(100% - 320px)"
-      class="overflow-y-auto border-round-xl"
-    >
+<main class="h-full w-full relative">
+  <div class="top-0 h-fit sticky z-3">
+    <pk-top-bar class="h-full w-full"></pk-top-bar>
+  </div>
+  <div class="flex gap-4 main-layout-wrapper overflow-y-none relative">
+    <pk-side-bar class="p-4 w-fit sticky h-full"></pk-side-bar>
+    <pk-main-layout class="py-4 overflow-y-hidden border-round-xl">
     </pk-main-layout>
   </div>
 </main>
