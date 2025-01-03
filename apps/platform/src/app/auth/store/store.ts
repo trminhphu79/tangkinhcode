@@ -10,6 +10,7 @@ import {
 import { AuthService } from '@tangkinhcode/shared/services';
 import { AppConfig } from '@tangkinhcode/shared/app-config';
 import { Router } from '@angular/router';
+import { tap } from 'rxjs';
 
 declare const google: any;
 
@@ -24,15 +25,19 @@ export const AuthStore = signalStore(
       authService = inject(AuthService)
     ) => ({
       signUp(payload: SignUpPayload) {
-        authService.signUp(payload).subscribe((response) => {
-          console.log('sign up response: ', response);
-        });
+        return authService.signUp(payload).pipe(
+          tap((response) => {
+            console.log('sign up response: ', response);
+          })
+        );
       },
 
       signIn(payload: SignInPayload) {
-        authService.signIn(payload).subscribe((response) => {
-          console.log('sign in response: ', response);
-        });
+        return authService.signIn(payload).pipe(
+          tap((response) => {
+            console.log('sign in response: ', response);
+          })
+        );
       },
 
       oauthSignIn(payload: OAuthSignInPayload) {
@@ -51,12 +56,17 @@ export const AuthStore = signalStore(
         window.open(appConfig.githubClientUrl());
       },
 
-      _handleCredentialResponse(response: any) {
-        console.log('response: ', response);
-        this.oauthSignIn({
-          token: response,
-          credentialType: 'GOOGLE',
-        });
+      _handleCredentialResponse(response: {
+        credential: string;
+        clientId: string;
+      }) {
+        if (response?.credential) {
+          console.log('response: ', response);
+          this.oauthSignIn({
+            token: response?.credential,
+            credentialType: 'GOOGLE',
+          });
+        }
       },
 
       _createFakeGoogleWrapper() {

@@ -16,10 +16,13 @@ import { Router } from '@angular/router';
 import { TopBarComponent } from '../../../app-shell/top-bar/top-bar.component';
 import { RippleModule } from 'primeng/ripple';
 import { AuthStore } from '../../store';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'pk-sign-in',
   imports: [
+    ToastModule,
     CommonModule,
     InputIconModule,
     IconFieldModule,
@@ -32,12 +35,14 @@ import { AuthStore } from '../../store';
   templateUrl: './sign-in.component.html',
   styleUrl: './sign-in.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [MessageService],
 })
 export class SignInComponent {
   protected keyLangs = KeyLanguage;
 
   private router = inject(Router);
   private authStore = inject(AuthStore);
+  private messageService = inject(MessageService);
 
   protected isRegister = signal(false);
 
@@ -64,19 +69,63 @@ export class SignInComponent {
     this.router.navigateByUrl('/');
   }
 
+  protected submit() {
+    if (this.isRegister()) {
+      this.signUp();
+      return;
+    }
+
+    this.signIn();
+  }
+
   protected signUp() {
-    this.authStore.signUp({
-      email: 'khoitran79@gmail.com',
-      confirmPassword: '123123@@',
-      password: '123123@@',
-    });
+    this.authStore
+      .signUp({
+        email: 'tangkinhcode231@example.com',
+        confirmPassword: '123123@@',
+        password: '123123@@',
+      })
+      .subscribe({
+        next: (response) => {
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Đăng ký',
+            detail: response?.message,
+          });
+        },
+        error: ({ error }) => {
+          console.log('err: ', error);
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Đăng ký',
+            detail: error?.message,
+          });
+        },
+      });
   }
 
   protected signIn() {
-    this.authStore.signIn({
-      email: 'khoitran79@gmail.com',
-      password: '123123@@',
-    });
+    this.authStore
+      .signIn({
+        email: 'tangkinhcode@example.com',
+        password: 'vodich123',
+      })
+      .subscribe({
+        next: (response) => {
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Đăng nhập',
+            detail: response?.message,
+          });
+        },
+        error: ({ error }) => {
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Đăng nhập',
+            detail: error?.message,
+          });
+        },
+      });
   }
 
   protected githubSignIn() {
