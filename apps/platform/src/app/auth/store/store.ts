@@ -25,25 +25,16 @@ export const AuthStore = signalStore(
       authService = inject(AuthService)
     ) => ({
       signUp(payload: SignUpPayload) {
-        return authService.signUp(payload).pipe(
-          tap((response) => {
-            console.log('sign up response: ', response);
-          })
-        );
+        return authService.signUp(payload).pipe(tap((response) => {}));
       },
 
       signIn(payload: SignInPayload) {
-        return authService.signIn(payload).pipe(
-          tap((response) => {
-            console.log('sign in response: ', response);
-          })
-        );
+        return authService.signIn(payload).pipe(tap((response) => {}));
       },
 
       oauthSignIn(payload: OAuthSignInPayload) {
         authService.oauthSignIn(payload).subscribe((response) => {
           // set to oauth store here
-          console.log('Oauth signin response: ', response);
           router.navigateByUrl('/');
         });
       },
@@ -61,7 +52,6 @@ export const AuthStore = signalStore(
         clientId: string;
       }) {
         if (response?.credential) {
-          console.log('response: ', response);
           this.oauthSignIn({
             token: response?.credential,
             credentialType: 'GOOGLE',

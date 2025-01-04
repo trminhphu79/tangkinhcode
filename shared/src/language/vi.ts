@@ -13,4 +13,7 @@ export const ViLanguage = Object.freeze({
   [KeyLanguage.vietnamese]: 'Tiếng việt',
   [KeyLanguage.signOut]: 'Đăng xuất',
   [KeyLanguage.profile]: 'Thông tin',
+  [KeyLanguage.invalidEmail]: 'Email không hợp lệ',
+  [KeyLanguage.passwordMustAtLeast8Char]: 'Mật khẩu phải tối thiểu 8 ký tự',
+  [KeyLanguage.confirmPasswordDoesnotMatch]: 'Mật khẩu không khớp',
 });

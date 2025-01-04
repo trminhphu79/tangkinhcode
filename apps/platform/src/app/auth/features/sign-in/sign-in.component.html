@@ -19,15 +19,66 @@
           {{ keyLangs.signIn | tr }}
         </span>
       </div>
-      <form class="flex flex-column mt-4">
-        <ng-contianer [ngTemplateOutlet]="signInTemplateRef"></ng-contianer>
+      <form
+        class="flex flex-column mt-4"
+        [formGroup]="authForm"
+        (submit)="submit()"
+      >
+        <!-- Email -->
+        <p-iconfield class="border-none outline-none mb-2">
+          <p-inputicon styleClass="pi pi-email"></p-inputicon>
+          <input
+            class="text-color placeholder-xs border-min w-full py-2 text-xs border-solid transition-duration-200 focus:border-primary border-round-md px-2 outline-none"
+            type="email"
+            formControlName="email"
+            placeholder="Email"
+          />
+        </p-iconfield>
+        @if(authForm.get('email')?.touched && authForm.get('email')?.invalid){
+        <small class="text-red-500">{{ keyLangs.invalidEmail | tr }}</small>
+        }
+
+        <!-- Password -->
+        <p-iconfield class="border-none outline-none mb-2">
+          <p-inputicon styleClass="pi pi-password"></p-inputicon>
+          <input
+            class="text-color placeholder-xs border-min w-full py-2 text-xs border-solid transition-duration-200 focus:border-primary border-round-md px-2 outline-none"
+            type="password"
+            formControlName="password"
+            placeholder="Password"
+          />
+        </p-iconfield>
+
+        @if(authForm.get('password')?.touched){
+        @if((authForm.get('password')?.value?.length?? 0 )< 8){
+        <small class="text-red-500">{{
+          keyLangs.passwordMustAtLeast8Char | tr
+        }}</small>
+        } }
+
+        <!-- Confirm Password (only in SignUp mode) -->
         <ng-container *ngIf="isRegister()">
-          <ng-contianer [ngTemplateOutlet]="signUpTemplateRef"></ng-contianer>
+          <p-iconfield class="border-none outline-none mb-2">
+            <p-inputicon styleClass="pi pi-password"></p-inputicon>
+            <input
+              class="text-color placeholder-xs border-min w-full py-2 text-xs border-solid transition-duration-200 focus:border-primary border-round-md px-2 outline-none"
+              type="password"
+              formControlName="confirmPassword"
+              placeholder="Confirm Password"
+            />
+          </p-iconfield>
+          @if(authForm.get('confirmPassword')?.touched){
+          @if(authForm.get('confirmPassword')?.value !==
+          authForm.get('password')?.value){
+          <small class="text-red-500">{{
+            keyLangs.confirmPasswordDoesnotMatch | tr
+          }}</small>
+          } }
         </ng-container>
+
         <button
-          type="button"
+          type="submit"
           pRipple
-          (click)="submit()"
           class="cursor-pointer mb-2 mt-2 w-full px-4 py-2 border-round-md bg-primary border-none outline-none hover:bg-primary-300 transition-duration-200 cursor-pointer"
         >
           {{ actionBtnLabel() | tr }}
@@ -72,38 +123,5 @@
     </div>
   </div>
 </div>
-
-<ng-template #signInTemplateRef>
-  <p-iconfield class="border-none outline-none mb-2">
-    <p-inputicon styleClass="pi pi-email" />
-    <input
-      class="text-color placeholder-xs border-min w-full py-2 text-xs border-solid transition-duration-200 focus:border-primary border-round-md px-2 outline-none"
-      type="text"
-      pInputText
-      placeholder="Email"
-    />
-  </p-iconfield>
-  <p-iconfield class="border-none outline-none mb-2">
-    <p-inputicon styleClass="pi pi-password" />
-    <input
-      class="text-color placeholder-xs border-min w-full py-2 text-xs border-solid transition-duration-200 focus:border-primary border-round-md px-2 outline-none"
-      type="password"
-      pInputText
-      placeholder="Password"
-    />
-  </p-iconfield>
-</ng-template>
-
-<ng-template #signUpTemplateRef>
-  <p-iconfield class="border-none outline-none mb-2">
-    <p-inputicon styleClass="pi pi-password" />
-    <input
-      class="text-color placeholder-xs border-min w-full py-2 text-xs border-solid transition-duration-200 focus:border-primary border-round-md px-2 outline-none"
-      type="password"
-      pInputText
-      placeholder="Confirm password"
-    />
-  </p-iconfield>
-</ng-template>
 
 <p-toast />

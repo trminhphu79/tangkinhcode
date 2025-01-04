@@ -13,4 +13,7 @@ export class KeyLanguage {
   static signOut = 'SignOut';
   static vietnamese = 'Vietnamese';
   static english = 'English';
+  static invalidEmail = 'Invalid email address';
+  static passwordMustAtLeast8Char = 'Password must be at least 8 characters';
+  static confirmPasswordDoesnotMatch = 'Confirm password does not match';
 }
