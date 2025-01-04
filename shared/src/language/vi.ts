@@ -18,4 +18,7 @@ export const ViLanguage = Object.freeze({
   [KeyLanguage.passwordMustContains1Number]:
     'Mật khẩu phải chứa tối thiểu 1 số',
   [KeyLanguage.confirmPasswordDoesnotMatch]: 'Mật khẩu không khớp',
+  [KeyLanguage.email]: 'Email',
+  [KeyLanguage.password]: 'Mật khẩu',
+  [KeyLanguage.confirmPassword]: 'Xác nhận mật khẩu',
 });

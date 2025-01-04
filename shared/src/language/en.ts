@@ -19,4 +19,7 @@ export const EngLanguage = Object.freeze({
   [KeyLanguage.passwordMustContains1Number]:
     'Password must contains at least 1 number',
   [KeyLanguage.confirmPasswordDoesnotMatch]: 'Confirm password does not match',
+  [KeyLanguage.email]: 'Email',
+  [KeyLanguage.password]: 'Password',
+  [KeyLanguage.confirmPassword]: 'Confirm password',
 });

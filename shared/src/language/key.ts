@@ -18,4 +18,7 @@ export class KeyLanguage {
   static passwordMustContains1Number =
     'Password must contains at least 1 number';
   static confirmPasswordDoesnotMatch = 'Confirm password does not match';
+  static email = 'Email';
+  static password = 'Password';
+  static confirmPassword = 'Confirm password';
 }

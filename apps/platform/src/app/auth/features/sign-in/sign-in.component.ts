@@ -18,17 +18,14 @@ import { TopBarComponent } from '../../../app-shell/top-bar/top-bar.component';
 import { RippleModule } from 'primeng/ripple';
 import { AuthStore } from '../../store';
 import { ToastModule } from 'primeng/toast';
+import { PkInputComponent } from 'shared/src/components/pk-input.component';
 import {
   confirmPasswordValidator,
+  emailValidator,
   passwordValidator,
   ToastUtil,
 } from 'shared/src/utils';
-import {
-  FormControl,
-  FormGroup,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'pk-sign-in',
@@ -43,6 +40,7 @@ import {
     TopBarComponent,
     RippleModule,
     ReactiveFormsModule,
+    PkInputComponent,
   ],
   templateUrl: './sign-in.component.html',
   styleUrl: './sign-in.component.scss',
@@ -58,9 +56,9 @@ export class SignInComponent {
   private toast = inject(ToastUtil);
 
   authForm = new FormGroup({
-    email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [passwordValidator()]),
-    confirmPassword: new FormControl('', []), // Only used in signup mode
+    email: new FormControl('', emailValidator()),
+    password: new FormControl('', passwordValidator()),
+    confirmPassword: new FormControl(''), // Only used in signup mode
   });
 
   protected isRegister = signal(false);
@@ -79,19 +77,13 @@ export class SignInComponent {
     // side logic changing form control
     effect(() => {
       if (this.isRegister()) {
-        this.authForm
-          .get('confirmPassword')
-          ?.setValidators([
-            confirmPasswordValidator(
-              'password',
-              'confirmPassword',
-              this.authForm
-            ),
-          ]);
+        this.authForm.controls.confirmPassword.setValidators(
+          confirmPasswordValidator('password', this.authForm)
+        );
       } else {
-        this.authForm.get('confirmPassword')?.clearValidators();
+        this.authForm.controls.confirmPassword.clearValidators();
       }
-      this.authForm.get('confirmPassword')?.updateValueAndValidity();
+      this.authForm.controls.confirmPassword.updateValueAndValidity();
     });
   }
 
