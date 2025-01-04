@@ -18,7 +18,11 @@ import { TopBarComponent } from '../../../app-shell/top-bar/top-bar.component';
 import { RippleModule } from 'primeng/ripple';
 import { AuthStore } from '../../store';
 import { ToastModule } from 'primeng/toast';
-import { ToastUtil } from 'shared/src/utils';
+import {
+  confirmPasswordValidator,
+  passwordValidator,
+  ToastUtil,
+} from 'shared/src/utils';
 import {
   FormControl,
   FormGroup,
@@ -55,10 +59,7 @@ export class SignInComponent {
 
   authForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [
-      Validators.required,
-      Validators.minLength(8),
-    ]),
+    password: new FormControl('', [passwordValidator()]),
     confirmPassword: new FormControl('', []), // Only used in signup mode
   });
 
@@ -80,7 +81,13 @@ export class SignInComponent {
       if (this.isRegister()) {
         this.authForm
           .get('confirmPassword')
-          ?.setValidators([Validators.required, Validators.minLength(8)]);
+          ?.setValidators([
+            confirmPasswordValidator(
+              'password',
+              'confirmPassword',
+              this.authForm
+            ),
+          ]);
       } else {
         this.authForm.get('confirmPassword')?.clearValidators();
       }
@@ -102,9 +109,7 @@ export class SignInComponent {
   }
 
   protected submit() {
-    for (let control of Object.values(this.authForm.controls)) {
-      control.markAsTouched();
-    }
+    this.authForm.markAllAsTouched();
 
     if (!this.authForm.valid) {
       return;
@@ -121,9 +126,9 @@ export class SignInComponent {
   protected signUp() {
     this.authStore
       .signUp({
-        email: this.authForm.controls.email.value?.trim()!,
-        password: this.authForm.controls.password.value?.trim()!,
-        confirmPassword: this.authForm.controls.confirmPassword.value?.trim()!,
+        email: this.authForm.value.email?.trim()!,
+        password: this.authForm.value.password?.trim()!,
+        confirmPassword: this.authForm.value.confirmPassword?.trim()!,
       })
       .subscribe({
         next: (response) => {
@@ -144,8 +149,8 @@ export class SignInComponent {
   protected signIn() {
     this.authStore
       .signIn({
-        email: this.authForm.controls.email.value?.trim()!,
-        password: this.authForm.controls.password.value?.trim()!,
+        email: this.authForm.value.email?.trim()!,
+        password: this.authForm.value.password?.trim()!,
       })
       .subscribe({
         next: (response) => {

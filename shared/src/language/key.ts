@@ -15,5 +15,7 @@ export class KeyLanguage {
   static english = 'English';
   static invalidEmail = 'Invalid email address';
   static passwordMustAtLeast8Char = 'Password must be at least 8 characters';
+  static passwordMustContains1Number =
+    'Password must contains at least 1 number';
   static confirmPasswordDoesnotMatch = 'Confirm password does not match';
 }

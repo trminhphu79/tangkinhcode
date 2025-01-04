@@ -34,7 +34,9 @@
             placeholder="Email"
           />
         </p-iconfield>
-        @if(authForm.get('email')?.touched && authForm.get('email')?.invalid){
+        @if((authForm.get('email')?.errors?.['required'] ||
+        authForm.get('email')?.errors?.['email']) &&
+        authForm.get('email')?.touched){
         <small class="text-red-500">{{ keyLangs.invalidEmail | tr }}</small>
         }
 
@@ -49,32 +51,35 @@
           />
         </p-iconfield>
 
-        @if(authForm.get('password')?.touched){
-        @if((authForm.get('password')?.value?.length?? 0 )< 8){
+        @if((authForm.get('password')?.errors?.['required'] ||
+        authForm.get('password')?.errors?.['minLength']) &&
+        authForm.get('password')?.touched){
         <small class="text-red-500">{{
           keyLangs.passwordMustAtLeast8Char | tr
         }}</small>
-        } }
+        } @if(authForm.get('password')?.errors?.['pattern']){
+        <small class="text-red-500">{{
+          keyLangs.passwordMustContains1Number | tr
+        }}</small>
+        }
 
         <!-- Confirm Password (only in SignUp mode) -->
-        <ng-container *ngIf="isRegister()">
-          <p-iconfield class="border-none outline-none mb-2">
-            <p-inputicon styleClass="pi pi-password"></p-inputicon>
-            <input
-              class="text-color placeholder-xs border-min w-full py-2 text-xs border-solid transition-duration-200 focus:border-primary border-round-md px-2 outline-none"
-              type="password"
-              formControlName="confirmPassword"
-              placeholder="Confirm Password"
-            />
-          </p-iconfield>
-          @if(authForm.get('confirmPassword')?.touched){
-          @if(authForm.get('confirmPassword')?.value !==
-          authForm.get('password')?.value){
-          <small class="text-red-500">{{
-            keyLangs.confirmPasswordDoesnotMatch | tr
-          }}</small>
-          } }
-        </ng-container>
+        @if(isRegister()){
+        <p-iconfield class="border-none outline-none mb-2">
+          <p-inputicon styleClass="pi pi-password"></p-inputicon>
+          <input
+            class="text-color placeholder-xs border-min w-full py-2 text-xs border-solid transition-duration-200 focus:border-primary border-round-md px-2 outline-none"
+            type="password"
+            formControlName="confirmPassword"
+            placeholder="Confirm Password"
+          />
+        </p-iconfield>
+        @if(authForm.get('confirmPassword')?.errors?.['passwordMisMatch'] &&
+        authForm.get('passwordMisMatch')?.touched){
+        <small class="text-red-500">{{
+          keyLangs.confirmPasswordDoesnotMatch | tr
+        }}</small>
+        } }
 
         <button
           type="submit"

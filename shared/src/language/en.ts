@@ -16,5 +16,7 @@ export const EngLanguage = Object.freeze({
   [KeyLanguage.invalidEmail]: 'Invalid email address',
   [KeyLanguage.passwordMustAtLeast8Char]:
     'Password must be at least 8 characters',
+  [KeyLanguage.passwordMustContains1Number]:
+    'Password must contains at least 1 number',
   [KeyLanguage.confirmPasswordDoesnotMatch]: 'Confirm password does not match',
 });
