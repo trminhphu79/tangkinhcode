@@ -6,6 +6,7 @@ import {
   OAuthSignInPayload,
   SignInPayload,
   SignUpPayload,
+  Tokens,
 } from '../models';
 import { BaseResponse } from '../models/base-response.model';
 
@@ -15,7 +16,13 @@ export class AuthService {
   private appConfig = inject(AppConfig);
   private baseUrl = this.appConfig.apiUrl;
 
-  //TODO: write generate response
+  fastSignIn(payload: string) {
+    return this.httpClient.post<BaseResponse<Account>>(
+      `${this.baseUrl()}auth/authenticate`,
+      { token: payload }
+    );
+  }
+
   signIn(payload: SignInPayload) {
     return this.httpClient.post<BaseResponse<Account>>(
       `${this.baseUrl()}auth/signIn`,
@@ -34,6 +41,13 @@ export class AuthService {
     return this.httpClient.post<BaseResponse<Account>>(
       `${this.baseUrl()}auth/oauth`,
       payload
+    );
+  }
+
+  refreshToken(payload: string) {
+    return this.httpClient.post<BaseResponse<Tokens>>(
+      `${this.baseUrl()}auth/refreshToken`,
+      { refreshToken: payload }
     );
   }
 }

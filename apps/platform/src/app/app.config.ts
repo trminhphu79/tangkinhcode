@@ -14,7 +14,11 @@ import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { environment } from '../environments/environment';
 import { AppConfig } from '@tangkinhcode/shared/app-config';
 import { MessageService } from 'primeng/api';
-import { loggingInterceptor } from '@tangkinhcode/shared/interceptors';
+import {
+  authTokenInterceptor,
+  loggingInterceptor,
+} from '@tangkinhcode/shared/interceptors';
+import { AuthStore } from './auth/store';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -22,10 +26,14 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     providePrimeNG(themeConfigs),
     provideAnimations(),
-    provideHttpClient(withInterceptors([loggingInterceptor])),
+    provideHttpClient(
+      withInterceptors([loggingInterceptor, authTokenInterceptor])
+    ),
     provideAppInitializer(() => {
       const appConfig = inject(AppConfig);
+      const authStore = inject(AuthStore);
       appConfig.setConfig(environment);
+      authStore.fastSignIn();
       return Promise.resolve();
     }),
     MessageService,

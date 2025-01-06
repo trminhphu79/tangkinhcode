@@ -3,14 +3,19 @@ import { signalStore } from '@ngrx/signals';
 import { withMethods } from '@ngrx/signals';
 import { AppStore } from '../../../store/app.store';
 import {
+  Account,
   OAuthSignInPayload,
   SignInPayload,
   SignUpPayload,
 } from '@tangkinhcode/shared/models';
-import { AuthService } from '@tangkinhcode/shared/services';
+import {
+  AuthService,
+  LocalStorageService,
+} from '@tangkinhcode/shared/services';
 import { AppConfig } from '@tangkinhcode/shared/app-config';
 import { Router } from '@angular/router';
 import { tap } from 'rxjs';
+import { BaseResponse } from 'shared/src/models/base-response.model';
 
 declare const google: any;
 
@@ -22,20 +27,30 @@ export const AuthStore = signalStore(
       router = inject(Router),
       appStore = inject(AppStore),
       appConfig = inject(AppConfig),
-      authService = inject(AuthService)
+      authService = inject(AuthService),
+      localStorage = inject(LocalStorageService)
     ) => ({
       signUp(payload: SignUpPayload) {
-        return authService.signUp(payload).pipe(tap((response) => {}));
+        return authService.signUp(payload).pipe(tap((res) => {}));
       },
 
       signIn(payload: SignInPayload) {
-        return authService.signIn(payload).pipe(tap((response) => {}));
+        return authService.signIn(payload).pipe(tap(this._handleLoginSuccess));
+      },
+
+      fastSignIn() {
+        const tokens = localStorage.getToken();
+        if (!tokens) return;
+
+        authService
+          .fastSignIn(tokens?.accessToken)
+          .subscribe((res) => this._handleLoginSuccess(res, false));
       },
 
       oauthSignIn(payload: OAuthSignInPayload) {
-        authService.oauthSignIn(payload).subscribe((response) => {
-          // set to oauth store here
-          router.navigateByUrl('/');
+        authService.oauthSignIn(payload).subscribe({
+          next: this._handleLoginSuccess,
+          error: (e) => {},
         });
       },
 
@@ -45,6 +60,12 @@ export const AuthStore = signalStore(
 
       githubSignIn() {
         window.open(appConfig.githubClientUrl());
+      },
+
+      logout() {
+        localStorage.clearToken();
+        appStore.setCurrentUser(null);
+        router.navigateByUrl('/');
       },
 
       _handleCredentialResponse(response: {
@@ -82,7 +103,15 @@ export const AuthStore = signalStore(
         const googleLoginWrapperButton =
           googleLoginWrapper.querySelector<HTMLDivElement>('div[role=button]');
 
-        return googleLoginWrapperButton?.click();
+        googleLoginWrapperButton?.click();
+      },
+      _handleLoginSuccess(res: BaseResponse<Account>, shouldNavigate = true) {
+        appStore.setCurrentUser(res.data);
+
+        if (shouldNavigate) {
+          router.navigateByUrl('/');
+          localStorage.setToken(res.data.tokens);
+        }
       },
     })
   )

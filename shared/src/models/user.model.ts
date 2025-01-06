@@ -1,3 +1,5 @@
+type CredentialType = 'GITHUB' | 'GOOGLE' | 'NONE';
+
 export type Profile = {
   id: string;
   accountId: string;
@@ -19,13 +21,14 @@ export type Tokens = {
 };
 
 export type Account = {
-  id: string;
-  email: string;
-  credentialType: string; // Consider using an enum if credentialType values are limited
   createdAt: string;
-  updatedAt: string;
+  credentialType: CredentialType;
+  email: string;
+  id: string;
+  isVerify: boolean;
   profile: Profile;
   tokens: Tokens;
+  updatedAt: string;
 };
 
 export type SignInPayload = {
@@ -39,5 +42,5 @@ export type SignUpPayload = SignInPayload & {
 
 export type OAuthSignInPayload = {
   token: string;
-  credentialType: 'GITHUB' | 'GOOGLE';
+  credentialType: CredentialType;
 };

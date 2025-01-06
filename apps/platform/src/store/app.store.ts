@@ -7,13 +7,13 @@ import { Account } from '@tangkinhcode/shared/models';
 type AppState = {
   currentLangCode: LangeCode;
   darkMode: boolean;
-  user: Partial<Account>;
+  user: Account | null;
 };
 
 const initialState: AppState = {
   currentLangCode: LangeCode.VI,
   darkMode: true,
-  user: {},
+  user: null,
 };
 
 export const AppStore = signalStore(
@@ -28,11 +28,13 @@ export const AppStore = signalStore(
       );
     },
     changeLanguage(isVietnamese: boolean): void {
-      console.log('changeLanguage:');
       const newCode = isVietnamese ? LangeCode.VI : LangeCode.EN;
 
       translate.setCurrentLangCode(newCode);
       patchState(store, (state) => this._patchLanguage(newCode));
+    },
+    setCurrentUser(user: Account | null) {
+      patchState(store, (state) => this._patchUser(user));
     },
 
     _patchDarkMode(isDark: boolean | undefined) {
@@ -43,6 +45,11 @@ export const AppStore = signalStore(
     _patchLanguage(langCode: LangeCode | undefined) {
       return {
         currentLangCode: langCode,
+      };
+    },
+    _patchUser(user: Account | null) {
+      return {
+        user: user,
       };
     },
   }))
