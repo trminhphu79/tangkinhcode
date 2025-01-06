@@ -39,7 +39,9 @@ export const AuthStore = signalStore(
       },
 
       signIn(payload: SignInPayload) {
-        return authService.signIn(payload).pipe(tap(this._handleLoginSuccess));
+        return authService
+          .signIn(payload)
+          .pipe(tap(this._handleLoginSuccess.bind(this)));
       },
 
       fastSignIn() {
