@@ -50,4 +50,18 @@ export class AuthService {
       { refreshToken: payload }
     );
   }
+
+  verify(accessToken: string) {
+    return this.httpClient.post<BaseResponse<Account>>(
+      `${this.baseUrl()}auth/verify`,
+      { token: accessToken }
+    );
+  }
+
+  sendOtp(email: string) {
+    return this.httpClient.post<BaseResponse<void>>(
+      `${this.baseUrl()}auth/sendOtp`,
+      { email: email }
+    );
+  }
 }

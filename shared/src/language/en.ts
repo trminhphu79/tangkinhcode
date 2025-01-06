@@ -22,4 +22,10 @@ export const EngLanguage = Object.freeze({
   [KeyLanguage.email]: 'Email',
   [KeyLanguage.password]: 'Password',
   [KeyLanguage.confirmPassword]: 'Confirm password',
+  [KeyLanguage.verifyEmail]: 'Verify email',
+  [KeyLanguage.weHaveSentYouAnVerificationEmail]:
+    'We have sent you an verification email. Please check it!',
+  [KeyLanguage.resendEmailMessage]:
+    "Click {0} if you didn't see any email. But make sure to check your spam!",
+  [KeyLanguage.resendEmailLink]: 'here',
 });

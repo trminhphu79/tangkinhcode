@@ -26,6 +26,7 @@ import {
   ToastUtil,
 } from 'shared/src/utils';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { AppStore } from 'apps/platform/src/store/app.store';
 
 @Component({
   selector: 'pk-sign-in',
@@ -52,6 +53,7 @@ export class SignInComponent {
 
   private router = inject(Router);
   private authStore = inject(AuthStore);
+  private appstore = inject(AppStore);
   private translatePipe = inject(TranslatePipe);
   private toast = inject(ToastUtil);
 
@@ -146,6 +148,8 @@ export class SignInComponent {
       })
       .subscribe({
         next: (response) => {
+          if (!this.appstore.user()?.isVerify) return;
+
           this.toast.showSuccess({
             title: this.translatePipe.transform(this.keyLangs.signIn),
             detail: response?.message,

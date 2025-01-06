@@ -14,7 +14,7 @@ import {
 } from '@tangkinhcode/shared/services';
 import { AppConfig } from '@tangkinhcode/shared/app-config';
 import { Router } from '@angular/router';
-import { tap } from 'rxjs';
+import { catchError, tap } from 'rxjs';
 import { BaseResponse } from 'shared/src/models/base-response.model';
 
 declare const google: any;
@@ -31,7 +31,11 @@ export const AuthStore = signalStore(
       localStorage = inject(LocalStorageService)
     ) => ({
       signUp(payload: SignUpPayload) {
-        return authService.signUp(payload).pipe(tap((res) => {}));
+        return authService.signUp(payload).pipe(
+          tap((res) => {
+            router.navigateByUrl('/auth/verify-email');
+          })
+        );
       },
 
       signIn(payload: SignInPayload) {
@@ -66,6 +70,16 @@ export const AuthStore = signalStore(
         localStorage.clearToken();
         appStore.setCurrentUser(null);
         router.navigateByUrl('/');
+      },
+
+      verifyEmail(accessToken: string) {
+        return authService
+          .verify(accessToken)
+          .pipe(tap(this._handleLoginSuccess));
+      },
+
+      sendOtp(email: string) {
+        return authService.sendOtp(email).pipe();
       },
 
       _handleCredentialResponse(response: {
@@ -109,8 +123,15 @@ export const AuthStore = signalStore(
         appStore.setCurrentUser(res.data);
 
         if (shouldNavigate) {
-          router.navigateByUrl('/');
+          if (!res.data.isVerify) {
+            this.sendOtp(res.data.email).subscribe();
+            router.navigateByUrl('/auth/verify-email');
+
+            return;
+          }
+
           localStorage.setToken(res.data.tokens);
+          router.navigateByUrl('/');
         }
       },
     })

@@ -15,4 +15,11 @@ export const authRoutes: Routes = [
         (c) => c.OauthRedirectComponent
       ),
   },
+  {
+    path: 'verify-email',
+    loadComponent: () =>
+      import('./features/verify-signup/verify-signup.component').then(
+        (c) => c.VerifySignupComponent
+      ),
+  },
 ];

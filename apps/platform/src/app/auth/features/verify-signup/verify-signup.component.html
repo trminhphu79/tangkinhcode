@@ -1,0 +1,21 @@
+<section
+  class="flex flex-column align-items-center justify-content-center h-screen text-center"
+>
+  <h2>{{ keyLang.verifyEmail | tr }}</h2>
+  <ng-container [ngTemplateOutlet]="currentToken() ? fromMail : fromPlatform">
+  </ng-container>
+</section>
+
+<ng-template #fromMail>
+  <p-progressSpinner></p-progressSpinner>
+</ng-template>
+
+<ng-template #fromPlatform>
+  <div>
+    {{ keyLang.weHaveSentYouAnVerificationEmail | tr }}
+  </div>
+  <div
+    [pkSafeHtml]="getResendEmailMessage()"
+    [clickCallback]="resendEmail"
+  ></div>
+</ng-template>

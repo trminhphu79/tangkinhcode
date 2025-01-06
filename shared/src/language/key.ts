@@ -21,4 +21,10 @@ export class KeyLanguage {
   static email = 'Email';
   static password = 'Password';
   static confirmPassword = 'Confirm password';
+  static verifyEmail = 'Verify email';
+  static weHaveSentYouAnVerificationEmail =
+    'We have sent you an verification email. Please check it!';
+  static resendEmailMessage =
+    "Click {0} if you didn't see any email. But make sure to check your spam!";
+  static resendEmailLink = 'here';
 }
