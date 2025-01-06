@@ -19,7 +19,7 @@ enum ToastSeverity {
 export class ToastUtil {
   private msgService = inject(MessageService);
 
-  #showToast(severity: ToastSeverity, data: ToastContent): void {
+  private showToast(severity: ToastSeverity, data: ToastContent): void {
     this.msgService.add({
       severity: severity,
       summary: data.title,
@@ -28,15 +28,15 @@ export class ToastUtil {
   }
 
   showSuccess(data: ToastContent): void {
-    this.#showToast(ToastSeverity.SUCCESS, data);
+    this.showToast(ToastSeverity.SUCCESS, data);
   }
   showError(data: ToastContent): void {
-    this.#showToast(ToastSeverity.ERROR, data);
+    this.showToast(ToastSeverity.ERROR, data);
   }
   showInfo(data: ToastContent): void {
-    this.#showToast(ToastSeverity.INFO, data);
+    this.showToast(ToastSeverity.INFO, data);
   }
   showWarn(data: ToastContent): void {
-    this.#showToast(ToastSeverity.WARN, data);
+    this.showToast(ToastSeverity.WARN, data);
   }
 }

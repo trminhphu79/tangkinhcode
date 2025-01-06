@@ -24,7 +24,8 @@
       "@tangkinhcode/shared/app-config": ["shared/src/app-config/index.ts"],
       "@tangkinhcode/shared/compnent/new-feed": ["shared/src/components/new-feed/index.ts"],
       "@tangkinhcode/shared/compnent/pk-input.component.ts": ["shared/src/components/pk-input.component.ts"],
-      "@tangkinhcode/shared/interceptors": ["shared/src/interceptors/index.ts"]
+      "@tangkinhcode/shared/interceptors": ["shared/src/interceptors/index.ts"],
+      "@tangkinhcode/shared/guards": ["shared/src/guards/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

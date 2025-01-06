@@ -2,10 +2,12 @@ import {
   HttpHandlerFn,
   HttpInterceptorFn,
   HttpErrorResponse,
+  HttpStatusCode,
 } from '@angular/common/http';
 import { inject } from '@angular/core';
 import { LocalStorageService, AuthService } from '../services';
 import { catchError, switchMap, throwError } from 'rxjs';
+import { Router } from '@angular/router';
 
 let isRefreshing = false; // Tracks ongoing token refresh attempts
 
@@ -15,6 +17,7 @@ export const authTokenInterceptor: HttpInterceptorFn = (
 ) => {
   const localStorageService = inject(LocalStorageService);
   const authService = inject(AuthService);
+  const router = inject(Router);
 
   const token = localStorageService.getToken();
 
@@ -24,7 +27,11 @@ export const authTokenInterceptor: HttpInterceptorFn = (
 
   return next(clonedRequest).pipe(
     catchError((error: HttpErrorResponse) => {
-      if (error.status === 401 && token?.refreshToken && !isRefreshing) {
+      if (
+        error.status === HttpStatusCode.Unauthorized &&
+        token?.refreshToken &&
+        !isRefreshing
+      ) {
         isRefreshing = true; // Set the flag to avoid multiple refresh attempts
         return authService.refreshToken(token.refreshToken).pipe(
           switchMap((res) => {
@@ -41,7 +48,16 @@ export const authTokenInterceptor: HttpInterceptorFn = (
           }),
           catchError((refreshError) => {
             isRefreshing = false; // Reset the flag on refresh failure
-            localStorageService.clearToken();
+
+            // Check if refresh token is expired or invalid
+            if (
+              refreshError.status === HttpStatusCode.Unauthorized ||
+              refreshError.status === HttpStatusCode.Forbidden
+            ) {
+              localStorageService.clearToken();
+              router.navigateByUrl('/auth'); // Redirect to login page
+            }
+
             return throwError(() => refreshError);
           })
         );

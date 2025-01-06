@@ -1,5 +1,6 @@
 import { AppShellComponent } from './app-shell/app-shell.component';
 import { Routes } from '@angular/router';
+import { authGuard } from '@tangkinhcode/shared/guards';
 
 export const routes: Routes = [
   {
@@ -8,7 +9,7 @@ export const routes: Routes = [
     children: [
       {
         path: '',
-        pathMatch:'full',
+        pathMatch: 'full',
         loadChildren: () =>
           import('./new-feed/new-feed.routes').then((r) => r.newfeedRoutes),
       },
@@ -32,5 +33,6 @@ export const routes: Routes = [
   {
     path: 'auth',
     loadChildren: () => import('./auth/auth.routes').then((r) => r.authRoutes),
+    canActivate: [authGuard],
   },
 ];
