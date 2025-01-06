@@ -14,8 +14,16 @@
   <div>
     {{ keyLang.weHaveSentYouAnVerificationEmail | tr }}
   </div>
-  <div
-    [pkSafeHtml]="getResendEmailMessage()"
-    [clickCallback]="resendEmail"
-  ></div>
+  <ng-container *ngIf="remainingTime() > 0; else resendOption">
+    <div class="text-sm text-gray-600 mt-2">
+      {{ getResendWaitMessage() }}
+    </div>
+  </ng-container>
+  <ng-template #resendOption>
+    <div
+      class="mt-2"
+      [pkSafeHtml]="getResendEmailMessage()"
+      [clickCallback]="resendEmail"
+    ></div>
+  </ng-template>
 </ng-template>

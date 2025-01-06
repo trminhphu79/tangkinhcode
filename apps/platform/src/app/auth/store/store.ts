@@ -33,6 +33,7 @@ export const AuthStore = signalStore(
       signUp(payload: SignUpPayload) {
         return authService.signUp(payload).pipe(
           tap((res) => {
+            appStore.setCurrentUser(res.data);
             router.navigateByUrl('/auth/verify-email');
           })
         );

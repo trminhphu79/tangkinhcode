@@ -23,8 +23,9 @@ export const ViLanguage = Object.freeze({
   [KeyLanguage.confirmPassword]: 'Xác nhận mật khẩu',
   [KeyLanguage.verifyEmail]: 'Xác minh tài khoản',
   [KeyLanguage.weHaveSentYouAnVerificationEmail]:
-    'Chúng tôi đã gửi một email đến cho bạn. Vui lòng kiểm tra',
+    'Chúng tôi đã gửi một email đến cho bạn. Vui lòng kiểm tra!',
   [KeyLanguage.resendEmailMessage]:
     'Nếu bạn không nhận được email nào, vui lòng nhấn {0}. Nhớ là kiểm tra trong mục thư rác nữa nhé!',
   [KeyLanguage.resendEmailLink]: 'vào đây',
+  [KeyLanguage.resendEmailWait]: 'Vui lòng đợi {0} trước khi gửi lại',
 });

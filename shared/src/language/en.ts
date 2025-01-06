@@ -28,4 +28,5 @@ export const EngLanguage = Object.freeze({
   [KeyLanguage.resendEmailMessage]:
     "Click {0} if you didn't see any email. But make sure to check your spam!",
   [KeyLanguage.resendEmailLink]: 'here',
+  [KeyLanguage.resendEmailWait]: 'Please wait {0} before resending',
 });

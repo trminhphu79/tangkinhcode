@@ -27,4 +27,5 @@ export class KeyLanguage {
   static resendEmailMessage =
     "Click {0} if you didn't see any email. But make sure to check your spam!";
   static resendEmailLink = 'here';
+  static resendEmailWait = 'Please wait {0} before resending';
 }
